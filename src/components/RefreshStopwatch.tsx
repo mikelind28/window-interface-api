@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 
-export default function RefreshStopwatch() {
+import type { Style } from '../types/styles';
+
+type StopwatchProps = {
+    style: Style;
+}
+
+
+export default function RefreshStopwatch({ style }: StopwatchProps) {
+    const {
+        containerClass,
+        h2Class,
+        pClass,
+        spanClass,
+    } = style;
+
     const [startTime, setStartTime] = useState(Date.now());
     const [currentTime, setCurrentTime] = useState(Date.now());
 
@@ -18,10 +32,10 @@ export default function RefreshStopwatch() {
     }, []);
 
     return (
-        <div className="w-60 bg-slate-800 m-2 p-4 border-2 rounded-lg border-emerald-400  inset-shadow-sm inset-shadow-slate-950/50 ring-1 ring-lime-200">
-            <h2 className="text-xl text-yellow-200 text-shadow-lg/50 text-shadow-neutral-950 font-medium tracking-wide">Seconds Since Refresh:</h2>
-            <p className="text-2xl text-cyan-100 text-shadow-md/50 text-shadow-neutral-950 font-semibold">{secondsPassed}
-                <span className="text-gray-400 font-light">{secondsPassed === "1" ? " second" : " seconds"}</span>
+        <div className={containerClass}>
+            <h2 className={h2Class}>Seconds Since Refresh:</h2>
+            <p className={pClass}>{secondsPassed}
+                <span className={spanClass}>{secondsPassed === "1" ? " second" : " seconds"}</span>
             </p>
         </div>
     )
