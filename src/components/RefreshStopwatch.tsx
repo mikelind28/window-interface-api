@@ -6,13 +6,12 @@ type StopwatchProps = {
     style: Style;
 }
 
-
 export default function RefreshStopwatch({ style }: StopwatchProps) {
     const {
         containerClass,
         h2Class,
         pClass,
-        spanClass,
+        spanClass1,
     } = style;
 
     const [startTime, setStartTime] = useState(Date.now());
@@ -35,7 +34,7 @@ export default function RefreshStopwatch({ style }: StopwatchProps) {
         <div className={containerClass}>
             <h2 className={h2Class}>Seconds Since Refresh:</h2>
             <p className={pClass}>{secondsPassed}
-                <span className={spanClass}>{secondsPassed === "1" ? " second" : " seconds"}</span>
+                <span className={spanClass1}>{secondsPassed === "1" ? " second" : " seconds"}</span>
             </p>
         </div>
     )

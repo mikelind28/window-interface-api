@@ -11,7 +11,7 @@ export default function YourScreen({ style }: YourScreenProps) {
         h2Class,
         h3Class,
         pClass,
-        spanClass
+        spanClass1,
     } = style; 
 
     const [screenDims, setScreenDims] = useState({
@@ -32,12 +32,12 @@ export default function YourScreen({ style }: YourScreenProps) {
             
             <h3 className={h3Class}>Width:</h3>
             <p className={pClass}>
-                {screenDims.width} <span className={spanClass}> px</span>
+                {screenDims.width} <span className={spanClass1}> px</span>
             </p>
 
             <h3 className={h3Class}>Height:</h3>
             <p className={pClass}>
-                {screenDims.height} <span className={spanClass}> px</span>
+                {screenDims.height} <span className={spanClass1}> px</span>
             </p>
         </div>
     );
