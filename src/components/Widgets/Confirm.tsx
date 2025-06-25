@@ -40,13 +40,13 @@ export default function Confirm({ style }: ConfirmProps) {
 
       {confirmed != "undefined" && confirmed &&
         <Paragraph style={pClass}>
-          <Span2 style={spanClass2}>The message was confirmed.</Span2>
+          <Span2 style={spanClass2}>The message was <strong>confirmed</strong>.</Span2>
         </Paragraph>
       }
 
       {confirmed != "undefined" && !confirmed &&
         <Paragraph style={pClass}>
-          <Span2 style={spanClass2}>The message was cancelled.</Span2>
+          <Span2 style={spanClass2}>The message was <strong>cancelled</strong>.</Span2>
         </Paragraph>
       }
 
