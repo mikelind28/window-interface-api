@@ -1,31 +1,48 @@
-import Header2 from "../Elements/Header2";
+// Element imports
+import Button from "../Elements/Button";
 import Container from "../Elements/Container";
+import Header2 from "../Elements/Header2";
+import Input from "../Elements/Input";
+
+// React imports
+import { useState } from "react";
+
+// Type imports
 import type { Style } from "../../types/types";
 
 type AlertProps = {
-    style: Style;
-}
+  style: Style;
+};
 
 export default function Alert({ style }: AlertProps) {
-    const {
-        containerClass,
-        h2Class,
-        h3Class,
-        pClass,
-        spanClass1,
-        spanClass2
-    } = style;
+  const { containerClass, h2Class, inputClass, buttonClass } = style;
 
-    return (
-        <Container style={containerClass}>
-            <Header2 style={h2Class}>
-                <code>window.alert()</code>
-            </Header2>
-            <input 
-                className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-black bg-cyan-50 rounded-sm caret-black placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="Customize your alert!"
-            />
+  const [alertText, setAlertText] = useState("");
 
-            <button className="">Button Text</button>
-        </Container>
-    )
+  function windowAlert() {
+    if (alertText === "") {
+        window.alert("Alert! 🚨");
+    } else {
+        window.alert(alertText);
+    }
+  }
+
+  return (
+    <Container style={containerClass}>
+      <Header2 style={h2Class}>
+        <code className="text-base xs:text-lg">window.alert()</code>
+      </Header2>
+
+      <Input
+        placeholder="Customize your alert!"
+        style={inputClass}
+        onChange={setAlertText}
+        value={alertText}
+      />
+
+      <Button style={buttonClass} handleClick={windowAlert}>
+        Alert!
+      </Button>
+    </Container>
+  );
 }
