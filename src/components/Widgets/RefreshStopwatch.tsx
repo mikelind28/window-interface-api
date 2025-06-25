@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-import type { Style } from '../types/styles';
+import type { Style } from '../../types/types';
+import Container from "../Elements/Container";
+import Header2 from "../Elements/Header2";
+import Paragraph from "../Elements/Paragraph";
+import Span1 from "../Elements/Span1";
 
 type StopwatchProps = {
     style: Style;
@@ -31,11 +35,14 @@ export default function RefreshStopwatch({ style }: StopwatchProps) {
     }, []);
 
     return (
-        <div className={containerClass}>
-            <h2 className={h2Class}>Seconds Since Refresh:</h2>
-            <p className={pClass}>{secondsPassed}
-                <span className={spanClass1}>{secondsPassed === "1" ? " second" : " seconds"}</span>
-            </p>
-        </div>
+        <Container style={containerClass}>
+            <Header2 style={h2Class}>Seconds Since Refresh:</Header2>
+            <Paragraph style={pClass}>
+                {secondsPassed}
+                <Span1 style={spanClass1}>
+                    {secondsPassed === "1" ? " second" : " seconds"}
+                </Span1>
+            </Paragraph>
+        </Container>
     )
 }

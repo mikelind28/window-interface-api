@@ -1,42 +1,24 @@
-import WindowDims from './components/WindowDims';
-import StyleTemplate from './components/StyleTemplate';
-import Alert from './components/Alert';
 import './App.css'
-import { useEffect, useState } from 'react';
 
-import type { Style } from './types/styles';
-import YourScreen from './components/YourScreen';
-import RefreshStopwatch from './components/RefreshStopwatch';
+import { useState } from 'react';
+
+import type { Style } from './types/types';
+
+import WindowDims from './components/Widgets/WindowDims';
+import StyleTemplate from './components/StyleTemplate';
+import YourScreen from './components/Widgets/YourScreen';
+import RefreshStopwatch from './components/Widgets/RefreshStopwatch';
+import Alert from './components/Widgets/Alert';
 
 function App() {
   const [currentStyle, setCurrentStyle] = useState<Style>({
-    containerClass: "",
-    h2Class: "",
-    h3Class: "",
-    pClass: "",
-    spanClass1: "",
-    spanClass2: "",
+    containerClass: "w-70 bg-slate-800 m-2 p-4 border-2 rounded-lg border-emerald-400  inset-shadow-sm inset-shadow-slate-950/50 ring-1 ring-lime-200",
+    h2Class: "text-xl text-yellow-300/95 text-shadow-lg/50 text-shadow-neutral-950 font-medium tracking-wide",
+    h3Class: "text-xl text-teal-300",
+    pClass: "text-xl text-cyan-100 text-shadow-md/50 text-shadow-neutral-950 font-semibold",
+    spanClass1: "text-neutral-500 text-xl",
+    spanClass2: "text-emerald-300/50 text-xl font-extralight text-shadow-none",
   });
-
-  useEffect(() => {
-    const containerStyle = window.document.getElementById("container")?.className;
-    const h2Style = window.document.getElementById("h2")?.className;
-    const h3Style = window.document.getElementById("h3")?.className;
-    const pStyle = window.document.getElementById("p")?.className;
-    const spanStyle1 = window.document.getElementById("span-1")?.className;
-    const spanStyle2 = window.document.getElementById("span-2")?.className;
-
-    const style = {
-      containerClass: containerStyle,
-      h2Class: h2Style,
-      h3Class: h3Style,
-      pClass: pStyle, 
-      spanClass1: spanStyle1,
-      spanClass2: spanStyle2,
-    }
-
-    setCurrentStyle(style);
-  }, []);
 
   return (
     <div>
@@ -54,7 +36,7 @@ function App() {
       
       <h2 className='m-2 text-3xl text-amber-200 font-light'>Methods</h2>
       <div className='flex flex-wrap mb-8'>
-        <Alert />
+        <Alert style={currentStyle}/>
       </div>
     </div>
   )
