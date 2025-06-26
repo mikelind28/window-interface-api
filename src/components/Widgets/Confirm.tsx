@@ -1,7 +1,7 @@
 // Element imports
 import Button from "../Elements/Button";
 import Container from "../Elements/Container";
-import Header2 from "../Elements/Header2";
+import Header3 from "../Elements/Header3";
 
 // React imports
 import { useState } from "react";
@@ -19,7 +19,7 @@ type confirmationState = "undefined" | true | false
 
 
 export default function Confirm({ style }: ConfirmProps) {
-  const { buttonClass, containerClass, h2Class, pClass, spanClass2 } = style;
+  const { buttonClass, containerClass, h3Class, pClass, spanClass2 } = style;
 
   const [confirmed, setConfirmed] = useState<confirmationState>("undefined");
 
@@ -30,9 +30,9 @@ export default function Confirm({ style }: ConfirmProps) {
 
   return (
     <Container style={containerClass}>
-      <Header2 style={h2Class}>
+      <Header3 style={h3Class}>
         <code className="text-base xs:text-lg">window.confirm()</code>
-      </Header2>
+      </Header3>
 
       <Button style={buttonClass} handleClick={windowAlert}>
         Confirm...

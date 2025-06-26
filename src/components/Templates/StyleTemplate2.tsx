@@ -10,11 +10,11 @@ type StyleTemplateProps = {
 export default function StyleTemplate2({ setStyle }: StyleTemplateProps) {
   return (
     <div className="m-2 w-[100%] grow xxs:w-50 rounded-lg outline-2 outline-indigo-700 outline-offset-3 bg-slate-800 p-4 hover:cursor-pointer" onClick={() => setStyle(styleClass2)}>
-      <h2 className="text-xl font-medium tracking-wide text-fuchsia-500 text-shadow-lg/50 text-shadow-neutral-950">
-        Header2 Element
-      </h2>
+      <h3 className="text-xl font-medium tracking-wide text-fuchsia-500 text-shadow-lg/50 text-shadow-neutral-950">
+        Header3 Element
+      </h3>
 
-      <h3 className="text-xl text-fuchsia-300">Header3 Element</h3>
+      <h4 className="text-xl text-fuchsia-300">Header4 Element</h4>
 
       <p className="text-xl font-semibold text-cyan-100 text-shadow-md/50 text-shadow-neutral-950">
         Paragraph Element

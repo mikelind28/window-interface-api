@@ -1,7 +1,7 @@
 // Element imports
 import Container from "../Elements/Container";
-import Header2 from "../Elements/Header2";
 import Header3 from "../Elements/Header3";
+import Header4 from "../Elements/Header4";
 import Paragraph from "../Elements/Paragraph";
 import Span1 from "../Elements/Span1";
 import Span2 from "../Elements/Span2";
@@ -17,7 +17,7 @@ type WindowDimsProps = {
 };
 
 export default function WindowDims({ style }: WindowDimsProps) {
-  const { containerClass, h2Class, h3Class, pClass, spanClass1, spanClass2 } =
+  const { containerClass, h3Class, h4Class, pClass, spanClass1, spanClass2 } =
     style;
 
   const [windowDims, setWindowDims] = useState({
@@ -46,9 +46,9 @@ export default function WindowDims({ style }: WindowDimsProps) {
 
   return (
     <Container style={containerClass}>
-      <Header2 style={h2Class}>Window Dimensions:</Header2>
+      <Header3 style={h3Class}>Window Dimensions:</Header3>
 
-      <Header3 style={h3Class}>Inner Dims (W x H):</Header3>
+      <Header4 style={h4Class}>Inner Dims (W x H):</Header4>
       <Paragraph style={pClass}>
         {windowDims.innerWidth}
         <Span1 style={spanClass1}> px</Span1>
@@ -57,7 +57,7 @@ export default function WindowDims({ style }: WindowDimsProps) {
         <Span1 style={spanClass1}> px</Span1>
       </Paragraph>
 
-      <Header3 style={h3Class}>Outer Dims (W x H):</Header3>
+      <Header4 style={h4Class}>Outer Dims (W x H):</Header4>
       <Paragraph style={pClass}>
         {windowDims.outerWidth}
         <span className={spanClass1}> px</span>

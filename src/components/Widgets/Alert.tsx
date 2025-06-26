@@ -1,7 +1,7 @@
 // Element imports
 import Button from "../Elements/Button";
 import Container from "../Elements/Container";
-import Header2 from "../Elements/Header2";
+import Header3 from "../Elements/Header3";
 import Input from "../Elements/Input";
 
 // React imports
@@ -15,7 +15,7 @@ type AlertProps = {
 };
 
 export default function Alert({ style }: AlertProps) {
-  const { containerClass, h2Class, inputClass, buttonClass } = style;
+  const { containerClass, h3Class, inputClass, buttonClass } = style;
 
   const [alertText, setAlertText] = useState("");
 
@@ -29,9 +29,9 @@ export default function Alert({ style }: AlertProps) {
 
   return (
     <Container style={containerClass}>
-      <Header2 style={h2Class}>
+      <Header3 style={h3Class}>
         <code className="text-base xs:text-lg">window.alert()</code>
-      </Header2>
+      </Header3>
 
       <Input
         placeholder="Customize your alert!"

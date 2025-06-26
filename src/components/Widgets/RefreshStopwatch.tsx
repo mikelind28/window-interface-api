@@ -1,6 +1,6 @@
 // Element imports
 import Container from "../Elements/Container";
-import Header2 from "../Elements/Header2";
+import Header3 from "../Elements/Header3";
 import Paragraph from "../Elements/Paragraph";
 import Span1 from "../Elements/Span1";
 
@@ -15,7 +15,7 @@ type StopwatchProps = {
 };
 
 export default function RefreshStopwatch({ style }: StopwatchProps) {
-  const { containerClass, h2Class, pClass, spanClass1 } = style;
+  const { containerClass, h3Class, pClass, spanClass1 } = style;
 
   const [startTime, setStartTime] = useState(Date.now());
   const [currentTime, setCurrentTime] = useState(Date.now());
@@ -35,7 +35,7 @@ export default function RefreshStopwatch({ style }: StopwatchProps) {
 
   return (
     <Container style={containerClass}>
-      <Header2 style={h2Class}>Seconds Since Refresh:</Header2>
+      <Header3 style={h3Class}>Seconds Since Refresh:</Header3>
       <Paragraph style={pClass}>
         {secondsPassed}
         <Span1 style={spanClass1}>
