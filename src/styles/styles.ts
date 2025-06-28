@@ -1,8 +1,8 @@
 // style classes
 export const styleClass1 = {
   containerClass:
-    "w-[100%] w-60 grow xxs:w-50  bg-slate-800 m-2 p-4 border-2 rounded-lg border-emerald-400  inset-shadow-sm inset-shadow-slate-950/50 ring-1 ring-lime-200",
-  h1Class: "m-2 mb-4 text-4xl font-bold text-amber-100",
+    "w-[100%] w-60 grow xxs:w-50 xl:max-w-100 bg-slate-800 m-2 p-4 border-2 rounded-lg border-emerald-400  inset-shadow-sm inset-shadow-slate-950/50 ring-1 ring-lime-200",
+  h1Class: "text-4xl font-bold text-amber-100",
   h2Class:
   "m-2 text-3xl font-light text-amber-200",
   h3Class: "text-xl text-yellow-300/95 text-shadow-lg/50 text-shadow-neutral-950 font-medium tracking-wide",
@@ -20,7 +20,7 @@ export const styleClass1 = {
 export const styleClass2 = {
   containerClass:
     "w-[100%] grow xxs:w-50 bg-slate-800 m-2 p-4 border-2 rounded-lg outline-2 outline-indigo-700 outline-offset-3",
-  h1Class: "m-2 mb-4 text-4xl font-bold text-purple-300",
+  h1Class: "text-4xl font-bold text-purple-300",
   h2Class:
     "m-2 text-3xl font-light text-indigo-300",
   h3Class: "text-xl text-fuchsia-500 text-shadow-lg/50 text-shadow-neutral-950 font-medium tracking-wide",
@@ -38,7 +38,7 @@ export const styleClass2 = {
 export const styleClass3 = {
   containerClass:
     "m-2 w-[100%] grow xxs:w-50 rounded-lg border-2 border-blue-500 bg-slate-800 p-4 inset-shadow-sm inset-shadow-slate-950/50 hover:cursor-pointer",
-  h1Class: "m-2 mb-4 text-4xl font-bold text-amber-300/90",
+  h1Class: "text-4xl font-bold text-amber-300/90",
   h2Class:
     "m-2 text-3xl font-light text-lime-500/90",
   h3Class: "text-xl font-medium tracking-wide text-orange-400 text-shadow-lg/50 text-shadow-neutral-950",

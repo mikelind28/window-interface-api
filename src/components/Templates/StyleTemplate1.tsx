@@ -9,7 +9,7 @@ type StyleTemplateProps = {
 
 export default function StyleTemplate1({ setStyle }: StyleTemplateProps) {
   return (
-    <div className="m-2 w-[100%] grow xxs:w-50 rounded-lg border-2 border-emerald-400 bg-slate-800 p-4 ring-1 inset-shadow-sm ring-lime-200 inset-shadow-slate-950/50 hover:cursor-pointer" onClick={() => setStyle(styleClass1)}>
+    <div className="m-2 w-[100%] grow xxs:w-50 rounded-lg border-2 border-emerald-400 bg-slate-800 p-4 ring-1 inset-shadow-sm ring-lime-200 inset-shadow-slate-950/50" onClick={() => setStyle(styleClass1)}>
       <h3 className="text-xl font-medium tracking-wide text-yellow-300/95 text-shadow-lg/50 text-shadow-neutral-950">
         Header3 Element
       </h3>

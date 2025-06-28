@@ -30,7 +30,10 @@ export default function Alert({ style }: AlertProps) {
   return (
     <Container style={containerClass}>
       <Header3 style={h3Class}>
-        <code className="text-base xs:text-lg">window.alert()</code>
+        <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
+            <code>window</code>
+            <code className="wrap-anywhere">.alert()</code>
+        </div>
       </Header3>
 
       <Input

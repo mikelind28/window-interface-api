@@ -31,7 +31,10 @@ export default function Confirm({ style }: ConfirmProps) {
   return (
     <Container style={containerClass}>
       <Header3 style={h3Class}>
-        <code className="text-base xs:text-lg">window.confirm()</code>
+        <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
+          <code>window.</code>
+          <code className="wrap-anywhere">confirm()</code>
+        </div>
       </Header3>
 
       <Button style={buttonClass} handleClick={windowAlert}>
