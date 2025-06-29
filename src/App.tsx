@@ -24,7 +24,7 @@ function App() {
   const [currentStyle, setCurrentStyle] = useState<Style>(styleClass1);
 
   return (
-    <div>
+    <div className="m-4">
       <div className="flex m-2 mb-4 justify-between items-baseline">
         <h1 className={currentStyle.h1Class}>
           Window Properties and Methods

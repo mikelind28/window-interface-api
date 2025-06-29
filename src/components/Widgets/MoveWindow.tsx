@@ -3,6 +3,9 @@ import Button from "../Elements/Button";
 import Container from "../Elements/Container";
 import Header3 from "../Elements/Header3";
 
+// Icon imports 
+import { GoArrowDown, GoArrowUp, GoArrowLeft, GoArrowRight, GoArrowUpLeft, GoArrowUpRight, GoArrowDownLeft, GoArrowDownRight } from "react-icons/go";
+
 // Type imports
 import type { Style } from "../../types/types";
 
@@ -19,35 +22,71 @@ export function MiniMover({ style }: MiniMoverProps) {
         window.moveBy(-20, 0);
     }
 
-    function moveRight() {
-        window.moveBy(20, 0);
+    function moveUpLeft() {
+        window.moveBy(-20, -20);
     }
 
     function moveUp() {
         window.moveBy(0, -20);
     }
 
+    function moveUpRight() {
+        window.moveBy(20, -20);
+    }
+
+    function moveRight() {
+        window.moveBy(20, 0);
+    }
+
+    function moveDownRight() {
+        window.moveBy(20, 20);
+    }
+
     function moveDown() {
         window.moveBy(0, 20);
     }
 
-    return (
-        <div className="bg-slate-950">
-            <Button style={style.buttonClass} handleClick={moveLeft}>
-                {"<"}
-            </Button>
+    function moveDownLeft() {
+        window.moveBy(-20, 20);
+    }
 
-            <Button style={style.buttonClass} handleClick={moveRight}>
-                {">"}
+    return (
+        <div className="bg-slate-950 p-4 h-[100vh] grid grid-cols-3 grid-rows-3 gap-4 justify-center align-middle">
+
+            <Button style={style.buttonClass} handleClick={moveUpLeft}>
+                <GoArrowUpLeft />
             </Button>
 
             <Button style={style.buttonClass} handleClick={moveUp}>
-                {"^"}
+                <GoArrowUp />
+            </Button>
+
+            <Button style={style.buttonClass} handleClick={moveUpRight}>
+                <GoArrowUpRight />
+            </Button>
+
+            <Button style={style.buttonClass} handleClick={moveLeft}>
+                <GoArrowLeft />
+            </Button>
+
+            <div></div>
+
+            <Button style={style.buttonClass} handleClick={moveRight}>
+                <GoArrowRight />
+            </Button>
+
+            <Button style={style.buttonClass} handleClick={moveDownLeft}>
+                <GoArrowDownLeft />
             </Button>
 
             <Button style={style.buttonClass} handleClick={moveDown}>
-                {"⌄"}
+                <GoArrowDown className="justify-self-center"/>
             </Button>
+
+            <Button style={style.buttonClass} handleClick={moveDownRight}>
+                <GoArrowDownRight />
+            </Button>
+ 
         </div> 
     ) 
 }
