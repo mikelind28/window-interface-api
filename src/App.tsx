@@ -18,6 +18,7 @@ import RefreshStopwatch from "./components/Widgets/RefreshStopwatch";
 import ScreenDims from "./components/Widgets/ScreenDims";
 import Settings from "./components/Widgets/Settings";
 import WindowDims from "./components/Widgets/WindowDims";
+import MoveWindow from "./components/Widgets/MoveWindow";
 
 function App() {
   const [currentStyle, setCurrentStyle] = useState<Style>(styleClass1);
@@ -43,6 +44,7 @@ function App() {
         <Alert style={currentStyle} />
         <Confirm style={currentStyle} />
         <GetSelection style={currentStyle} />
+        <MoveWindow style={currentStyle} />
       </div>
     </div>
   );

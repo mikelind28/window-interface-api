@@ -72,18 +72,18 @@ export default function Settings({ style, setStyle }: SettingsProps) {
                         {/* buttons for changing the style */}
                         <div className="flex">
                             <div 
-                            className={`w-10 h-10 bg-slate-800 ${style === styleClass1 ? "bg-white drop-shadow-xs drop-shadow-white/90" : ""} m-2 border-2 rounded-lg border-emerald-400 ring-1 ring-lime-200 hover:cursor-pointer`
+                            className={`w-10 h-10 bg-slate-800 ${style === styleClass1 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 border-2 rounded-lg border-emerald-400 ring-1 ring-lime-200 hover:cursor-pointer`
                             }
                             onClick={() => setStyle(styleClass1)}
                             ></div>
 
                             <div 
-                            className={`w-10 h-10 bg-slate-800 ${style === styleClass2 ? "bg-white drop-shadow-xs drop-shadow-white/90" : ""} m-2 rounded-lg outline-2 outline-indigo-700 outline-offset-3 hover:cursor-pointer`} 
+                            className={`w-10 h-10 bg-slate-800 ${style === styleClass2 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 rounded-lg border-2 border-indigo-700 hover:cursor-pointer`} 
                             onClick={() => setStyle(styleClass2)}
                             ></div>
 
                             <div 
-                            className={`w-10 h-10 bg-slate-800 ${style === styleClass3 ? "bg-white drop-shadow-xs drop-shadow-white/90" : ""} m-2 rounded-lg border-2 border-blue-500 outline-offset-3 hover:cursor-pointer`} 
+                            className={`w-10 h-10 bg-slate-800 ${style === styleClass3 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 rounded-lg border-2 border-blue-500 hover:cursor-pointer`} 
                             onClick={() => setStyle(styleClass3)}></div>
                         </div>
 

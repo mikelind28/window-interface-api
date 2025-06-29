@@ -1,7 +1,7 @@
 // style classes
 export const styleClass1 = {
   containerClass:
-    "w-[100%] w-60 grow xxs:w-50 xl:max-w-100 bg-slate-800 m-2 p-4 border-2 rounded-lg border-emerald-400  inset-shadow-sm inset-shadow-slate-950/50 ring-1 ring-lime-200",
+    "w-[100%] min-w-70 grow xxs:w-50 xl:max-w-100 bg-slate-800 m-2 p-4 border-2 rounded-lg border-emerald-400  inset-shadow-sm inset-shadow-slate-950/50 ring-1 ring-lime-200",
   h1Class: "text-4xl font-bold text-amber-100",
   h2Class:
   "m-2 text-3xl font-light text-amber-200",
