@@ -19,6 +19,7 @@ import ScreenDims from "./components/Widgets/ScreenDims";
 import Settings from "./components/Widgets/Settings";
 import WindowDims from "./components/Widgets/WindowDims";
 import MoveWindow from "./components/Widgets/MoveWindow";
+import Prompt from "./components/Widgets/Prompt";
 
 function App() {
   const [currentStyle, setCurrentStyle] = useState<Style>(styleClass1);
@@ -43,6 +44,7 @@ function App() {
       <div className="mb-8 flex flex-wrap">
         <Alert style={currentStyle} />
         <Confirm style={currentStyle} />
+        <Prompt style={currentStyle} />
         <GetSelection style={currentStyle} />
         <MoveWindow style={currentStyle} />
       </div>

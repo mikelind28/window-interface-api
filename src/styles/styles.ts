@@ -19,7 +19,7 @@ export const styleClass1 = {
 
 export const styleClass2 = {
   containerClass:
-    "w-[100%] grow xxs:w-50 bg-slate-800 m-2 p-4 border-2 rounded-lg outline-2 outline-indigo-700 outline-offset-3",
+    "w-[100%] min-w-70 grow xxs:w-50 xl:max-w-100 bg-slate-800 m-2 p-4 border-2 rounded-lg outline-2 outline-indigo-700 outline-offset-3",
   h1Class: "text-4xl font-bold text-purple-300",
   h2Class:
     "m-2 text-3xl font-light text-indigo-300",
@@ -37,7 +37,7 @@ export const styleClass2 = {
 
 export const styleClass3 = {
   containerClass:
-    "m-2 w-[100%] grow xxs:w-50 rounded-lg border-2 border-blue-500 bg-slate-800 p-4 inset-shadow-sm inset-shadow-slate-950/50 hover:cursor-pointer",
+    "w-[100%] min-w-70 grow xxs:w-50 xl:max-w-100 m-2 p-4 rounded-lg border-2 border-blue-500 bg-slate-800 inset-shadow-sm inset-shadow-slate-950/50 hover:cursor-pointer",
   h1Class: "text-4xl font-bold text-amber-300/90",
   h2Class:
     "m-2 text-3xl font-light text-lime-500/90",

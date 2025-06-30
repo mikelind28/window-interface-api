@@ -8,6 +8,8 @@ import { GoArrowDown, GoArrowUp, GoArrowLeft, GoArrowRight, GoArrowUpLeft, GoArr
 
 // Type imports
 import type { Style } from "../../types/types";
+import { useState } from "react";
+import Span2 from "../Elements/Span2";
 
 type MoveWindowProps = {
   style: Style;
@@ -18,73 +20,97 @@ type MiniMoverProps = {
 };
 
 export function MiniMover({ style }: MiniMoverProps) {
+    const {
+        buttonClass,
+        inputClass,
+        spanClass2
+    } = style;
+
+    const [pixels, setPixels] = useState("20");
+
     function moveLeft() {
-        window.moveBy(-20, 0);
+        window.moveBy((parseInt(pixels) * -1), 0);
     }
 
     function moveUpLeft() {
-        window.moveBy(-20, -20);
+        window.moveBy((parseInt(pixels) * -1), (parseInt(pixels) * -1));
     }
 
     function moveUp() {
-        window.moveBy(0, -20);
+        window.moveBy(0, (parseInt(pixels) * -1));
     }
 
     function moveUpRight() {
-        window.moveBy(20, -20);
+        window.moveBy(parseInt(pixels), (parseInt(pixels) * -1));
     }
 
     function moveRight() {
-        window.moveBy(20, 0);
+        window.moveBy(parseInt(pixels), 0);
     }
 
     function moveDownRight() {
-        window.moveBy(20, 20);
+        window.moveBy(parseInt(pixels), parseInt(pixels));
     }
 
     function moveDown() {
-        window.moveBy(0, 20);
+        window.moveBy(0, parseInt(pixels));
     }
 
     function moveDownLeft() {
-        window.moveBy(-20, 20);
+        window.moveBy((parseInt(pixels) * -1), parseInt(pixels));
     }
 
+    const iconClassName = " justify-self-center text-2xl";
+    const buttonClassName = " w-20 h-20";
+
     return (
-        <div className="bg-slate-950 p-4 h-[100vh] grid grid-cols-3 grid-rows-3 gap-4 justify-center align-middle">
+        <div className="bg-slate-950 min-w-70 min-h-70 p-4 h-[100vh] grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center">
 
-            <Button style={style.buttonClass} handleClick={moveUpLeft}>
-                <GoArrowUpLeft />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveUpLeft}>
+                <GoArrowUpLeft className={iconClassName}/>
             </Button>
 
-            <Button style={style.buttonClass} handleClick={moveUp}>
-                <GoArrowUp />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveUp}>
+                <GoArrowUp className={iconClassName}/>
             </Button>
 
-            <Button style={style.buttonClass} handleClick={moveUpRight}>
-                <GoArrowUpRight />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveUpRight}>
+                <GoArrowUpRight className={iconClassName}/>
             </Button>
 
-            <Button style={style.buttonClass} handleClick={moveLeft}>
-                <GoArrowLeft />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveLeft}>
+                <GoArrowLeft className={iconClassName}/>
             </Button>
 
-            <div></div>
+            <div className="flex-col text-center justify-items-center">
+                <Span2 style={spanClass2}>Move by </Span2>
+                <input 
+                    className={inputClass} 
+                    placeholder={"pixels"} 
+                    value={pixels} 
+                    type="number"
+                    min="10"
+                    max="200"
+                    step="10"
+                    onChange={(e) => setPixels(e.target.value)}                    
+                />
+                <Span2 style={spanClass2}> pixels</Span2>
+            </div>
 
-            <Button style={style.buttonClass} handleClick={moveRight}>
-                <GoArrowRight />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveRight}>
+                <GoArrowRight className={iconClassName}/>
             </Button>
 
-            <Button style={style.buttonClass} handleClick={moveDownLeft}>
-                <GoArrowDownLeft />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveDownLeft}>
+                <GoArrowDownLeft className={iconClassName}/>
             </Button>
 
-            <Button style={style.buttonClass} handleClick={moveDown}>
-                <GoArrowDown className="justify-self-center"/>
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveDown}>
+                <GoArrowDown className={iconClassName}/>
             </Button>
 
-            <Button style={style.buttonClass} handleClick={moveDownRight}>
-                <GoArrowDownRight />
+            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveDownRight}>
+                <GoArrowDownRight className={iconClassName}/>
             </Button>
  
         </div> 
@@ -95,9 +121,16 @@ export default function MoveWindow({ style }: MoveWindowProps) {
     const { containerClass, h3Class, buttonClass } = style;
 
     // center the popup window on the screen
+    const screenWidth = window.screen.availWidth;
+    const screenHeight = window.screen.availHeight;
+
+    const middleOfScreenX = screenWidth/2;
+    const middleOfScreenY = screenHeight/2;
+
+    console.log(middleOfScreenX, middleOfScreenY)
 
     function openWindow() {
-        window.open("window-mover", "_target", "popup left=100,top=100,width=200,height=200");
+        window.open("window-mover", "_target", `popup left=${middleOfScreenX - 200},top=${middleOfScreenY - 200},width=400,height=400`);
     }
 
     return (
