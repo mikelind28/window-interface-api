@@ -4,6 +4,7 @@ import Container from "../Elements/Container";
 import Header3 from "../Elements/Header3";
 import Paragraph from "../Elements/Paragraph";
 import Span2 from "../Elements/Span2";
+import Span1 from "../Elements/Span1";
 
 type GetSelectionProps = {
     style: Style;
@@ -14,6 +15,7 @@ export default function GetSelection( { style }: GetSelectionProps) {
         containerClass,
         h3Class,
         pClass,
+        spanClass1,
         spanClass2
     } = style;
 
@@ -35,10 +37,17 @@ export default function GetSelection( { style }: GetSelectionProps) {
                 </div>
             </Header3>
 
-            <Span2 style={spanClass2}>
-                Your selected text:
-            </Span2>
+            <Span1 style={spanClass1}>
+                Select some text from anywhere on the page.
+                <br/>
+            </Span1>
 
+            { selection && 
+                <Span2 style={spanClass2}>
+                Your selected text:
+                </Span2>
+            }
+    
             <Paragraph style={pClass}>
                 {selection}
             </Paragraph>

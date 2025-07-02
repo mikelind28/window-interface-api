@@ -66,19 +66,19 @@ export function MiniMover({ style }: MiniMoverProps) {
     return (
         <div className="bg-slate-950 min-w-70 min-h-70 p-4 h-[100vh] grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center">
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveUpLeft}>
+            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-start')} handleClick={moveUpLeft}>
                 <GoArrowUpLeft className={iconClassName}/>
             </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveUp}>
+            <Button style={buttonClass?.concat(buttonClassName + ' self-start')} handleClick={moveUp}>
                 <GoArrowUp className={iconClassName}/>
             </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveUpRight}>
+            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-start')} handleClick={moveUpRight}>
                 <GoArrowUpRight className={iconClassName}/>
             </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveLeft}>
+            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start')} handleClick={moveLeft}>
                 <GoArrowLeft className={iconClassName}/>
             </Button>
 
@@ -97,19 +97,19 @@ export function MiniMover({ style }: MiniMoverProps) {
                 <Span2 style={spanClass2}> pixels</Span2>
             </div>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveRight}>
+            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end')} handleClick={moveRight}>
                 <GoArrowRight className={iconClassName}/>
             </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveDownLeft}>
+            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-end')} handleClick={moveDownLeft}>
                 <GoArrowDownLeft className={iconClassName}/>
             </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveDown}>
+            <Button style={buttonClass?.concat(buttonClassName + ' self-end')} handleClick={moveDown}>
                 <GoArrowDown className={iconClassName}/>
             </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName)} handleClick={moveDownRight}>
+            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-end')} handleClick={moveDownRight}>
                 <GoArrowDownRight className={iconClassName}/>
             </Button>
  
@@ -138,7 +138,7 @@ export default function MoveWindow({ style }: MoveWindowProps) {
             <Header3 style={h3Class}>
                 <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
                     <code>window</code>
-                    <code className="wrap-anywhere">.moveBy(deltaX, deltaY)</code>
+                    <code className="wrap-anywhere">.moveBy()</code>
                 </div>
             </Header3>
 

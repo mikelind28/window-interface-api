@@ -38,11 +38,13 @@ export default function Prompt({ style }: PromptProps) {
         Prompt...
       </Button>
 
-      <div>
-      <Span2 style={spanClass2}>
-        Your input:
-      </Span2>
-      </div>
+      { userInput &&
+        <div>
+        <Span2 style={spanClass2}>
+          Your input:
+        </Span2>
+        </div>
+      }
 
       <Paragraph style={pClass}>
           {userInput}

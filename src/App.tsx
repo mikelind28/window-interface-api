@@ -20,6 +20,9 @@ import Settings from "./components/Widgets/Settings";
 import WindowDims from "./components/Widgets/WindowDims";
 import MoveWindow from "./components/Widgets/MoveWindow";
 import Prompt from "./components/Widgets/Prompt";
+import SetInterval from "./components/Widgets/SetInterval";
+import CursorCoordinates from "./components/Widgets/CursorCoordinates";
+import ClickCounter from "./components/Widgets/ClickCounter";
 
 function App() {
   const [currentStyle, setCurrentStyle] = useState<Style>(styleClass1);
@@ -46,7 +49,14 @@ function App() {
         <Confirm style={currentStyle} />
         <Prompt style={currentStyle} />
         <GetSelection style={currentStyle} />
-        <MoveWindow style={currentStyle} />
+        { window.document && <MoveWindow style={currentStyle} />}
+        <SetInterval style={currentStyle} />
+      </div>
+
+      <h2 className={currentStyle.h2Class}>Mouse Events</h2>
+      <div className="mb-8 flex flex-wrap">
+        <CursorCoordinates style={currentStyle} />
+        <ClickCounter style={currentStyle} />
       </div>
     </div>
   );
