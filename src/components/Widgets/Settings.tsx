@@ -67,7 +67,7 @@ export default function Settings({ style, setStyle }: SettingsProps) {
                 <div className="flex min-h-full items-center justify-center p-4">
                     <DialogPanel
                         transition
-                        className="w-full max-w-md rounded-xl bg-white/10 p-6 backdrop-blur-3xl border-[1px] border-neutral-600 duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+                        className="w-full max-w-md rounded-xl bg-white/10 p-6 backdrop-blur-3xl border border-neutral-600 duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
                     >
                         <DialogTitle as="h3" className="text-base/7 font-medium text-white">
                             Style Settings
