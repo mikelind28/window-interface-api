@@ -1,5 +1,5 @@
 // Element imports
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 import Paragraph from "../Elements/Paragraph";
 import Span1 from "../Elements/Span1";
@@ -9,13 +9,15 @@ import { useEffect, useState } from "react";
 
 // Type imports
 import type { Style } from "../../types/types";
+import Button from "../Elements/Button";
 
-type StopwatchProps = {
+type SetIntervalSinceRefreshProps = {
   style: Style;
 };
 
-export default function RefreshStopwatch({ style }: StopwatchProps) {
-  const { containerClass, h3Class, pClass, spanClass1 } = style;
+// TODO: update this to read "_ minutes and _seconds"
+export default function SetIntervalSinceRefresh({ style }: SetIntervalSinceRefreshProps) {
+  const { buttonClass, containerClass, h3Class, pClass, spanClass1 } = style;
 
   const [startTime, setStartTime] = useState(Date.now());
   const [currentTime, setCurrentTime] = useState(Date.now());
@@ -34,14 +36,24 @@ export default function RefreshStopwatch({ style }: StopwatchProps) {
   }, []);
 
   return (
-    <Container style={containerClass}>
-      <Header3 style={h3Class}>Seconds Since Refresh:</Header3>
+    <WidgetContainer style={containerClass}>
+      <Header3 style={h3Class}>
+        <code>window</code>
+        <code className="wrap-anywhere">.setInterval()</code>
+      </Header3>
+
+      <Span1 style={spanClass1}>Time since refresh:</Span1>
+
       <Paragraph style={pClass}>
         {secondsPassed}
         <Span1 style={spanClass1}>
           {secondsPassed === "1" ? " second" : " seconds"}
         </Span1>
       </Paragraph>
-    </Container>
+
+      <Button style={buttonClass} handleClick={() => window.location.reload()}>
+        Refresh
+      </Button>
+    </WidgetContainer>
   );
 }

@@ -6,5 +6,11 @@ type Header3Props = {
 };
 
 export default function Header3({ children, style }: Header3Props) {
-  return <h3 className={style}>{children}</h3>;
+  return (
+    <h3 className={style}>
+      <div className="flex flex-wrap text-base sm:text-lg">
+        {children}
+      </div>
+    </h3>
+  );
 }

@@ -11,24 +11,24 @@ import { useEffect, useState } from "react";
 import type { Style } from "../../types/types";
 import Header4 from "../Elements/Header4";
 
-type ClickCounterProps = {
+type KeyDownProps = {
   style: Style;
 };
 
-export default function ClickCounter({ style }: ClickCounterProps) {
+export default function KeyDown({ style }: KeyDownProps) {
   const { containerClass, h3Class, h4Class, pClass, spanClass1 } = style;
 
-  const [clickCount, setClickCount] = useState(0);
+  const [currentKeyDown, setCurrentKeyDown] = useState('');
 
   useEffect(() => {
-    function handleClick() {
-        setClickCount(prev => prev + 1);
+    function handleKeyDown(event: KeyboardEvent) {
+        setCurrentKeyDown(event.key);
     }
 
-    document.addEventListener('click', handleClick);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-        document.removeEventListener('click', handleClick);
+        window.removeEventListener('keydown', handleKeyDown);
     }
   }, []);
 
@@ -37,20 +37,19 @@ export default function ClickCounter({ style }: ClickCounterProps) {
       <Header3 style={h3Class}>
         <code>document</code>
         <code>.addEventListener</code>
-        <code>('click', ...)</code>
+        <code>('keydown', ...)</code>
       </Header3>
 
-      <Header4 style={h4Class}>Click counter:</Header4>
-      
-      <Paragraph style={pClass}>
-        <Span1 style={spanClass1}>
-          You've clicked 
-        </Span1>
-         {` ${clickCount} `}
-        <Span1 style={spanClass1}>
-         times.
-        </Span1>
-      </Paragraph>
+      <Header4 style={h4Class}>Press a keyboard key!</Header4>
+
+      <Span1 style={spanClass1}>
+        You pressed: 
+      </Span1> 
+
+      <br/>
+
+      <kbd className="bg-neutral-200 rounded-sm border-1 border-neutral-500 drop-shadow-neutral-800 inset-shadow-neutral-50 text-neutral-900 inline-block font-bold px-2 mt-1">{currentKeyDown}</kbd>
+
     </WidgetContainer>
   );
 }

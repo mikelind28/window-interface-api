@@ -1,6 +1,6 @@
 // Element imports
 import Button from "../Elements/Button";
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 import Input from "../Elements/Input";
 
@@ -28,12 +28,9 @@ export default function Alert({ style }: AlertProps) {
   }
 
   return (
-    <Container style={containerClass}>
+    <WidgetContainer style={containerClass}>
       <Header3 style={h3Class}>
-        <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
-            <code>window</code>
-            <code className="wrap-anywhere">.alert()</code>
-        </div>
+          <code>window.alert()</code>
       </Header3>
 
       <Input
@@ -46,6 +43,6 @@ export default function Alert({ style }: AlertProps) {
       <Button style={buttonClass} handleClick={windowAlert}>
         Alert!
       </Button>
-    </Container>
+    </WidgetContainer>
   );
 }

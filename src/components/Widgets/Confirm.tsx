@@ -1,6 +1,6 @@
 // Element imports
 import Button from "../Elements/Button";
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 
 // React imports
@@ -29,12 +29,10 @@ export default function Confirm({ style }: ConfirmProps) {
   }
 
   return (
-    <Container style={containerClass}>
+    <WidgetContainer style={containerClass}>
       <Header3 style={h3Class}>
-        <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
-          <code>window.</code>
-          <code className="wrap-anywhere">confirm()</code>
-        </div>
+        <code>window.</code>
+        <code className="wrap-anywhere">confirm()</code>
       </Header3>
 
       <Button style={buttonClass} handleClick={windowAlert}>
@@ -53,6 +51,6 @@ export default function Confirm({ style }: ConfirmProps) {
         </Paragraph>
       }
 
-    </Container>
+    </WidgetContainer>
   );
 }

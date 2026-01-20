@@ -1,6 +1,6 @@
 // Element imports
 import Button from "../Elements/Button";
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 
 // Icon imports 
@@ -10,6 +10,7 @@ import { GoArrowDown, GoArrowUp, GoArrowLeft, GoArrowRight, GoArrowUpLeft, GoArr
 import type { Style } from "../../types/types";
 import { useState } from "react";
 import Span2 from "../Elements/Span2";
+import Span1 from "../Elements/Span1";
 
 type MoveWindowProps = {
   style: Style;
@@ -64,61 +65,65 @@ export function MiniMover({ style }: MiniMoverProps) {
     const buttonClassName = " w-20 h-20";
 
     return (
-        <div className="bg-slate-950 min-w-70 min-h-70 p-4 h-[100vh] grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center">
+        <div>
+            <title>window.moveBy()</title>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-start')} handleClick={moveUpLeft}>
-                <GoArrowUpLeft className={iconClassName}/>
-            </Button>
+            <div className="bg-slate-950 min-w-70 min-h-70 p-4 h-screen grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center">
 
-            <Button style={buttonClass?.concat(buttonClassName + ' self-start')} handleClick={moveUp}>
-                <GoArrowUp className={iconClassName}/>
-            </Button>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-start')} handleClick={moveUpLeft}>
+                    <GoArrowUpLeft className={iconClassName}/>
+                </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-start')} handleClick={moveUpRight}>
-                <GoArrowUpRight className={iconClassName}/>
-            </Button>
+                <Button style={buttonClass?.concat(buttonClassName + ' self-start')} handleClick={moveUp}>
+                    <GoArrowUp className={iconClassName}/>
+                </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start')} handleClick={moveLeft}>
-                <GoArrowLeft className={iconClassName}/>
-            </Button>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-start')} handleClick={moveUpRight}>
+                    <GoArrowUpRight className={iconClassName}/>
+                </Button>
 
-            <div className="flex-col text-center justify-items-center">
-                <Span2 style={spanClass2}>Move by </Span2>
-                <input 
-                    className={inputClass} 
-                    placeholder={"pixels"} 
-                    value={pixels} 
-                    type="number"
-                    min="10"
-                    max="200"
-                    step="10"
-                    onChange={(e) => setPixels(e.target.value)}                    
-                />
-                <Span2 style={spanClass2}> pixels</Span2>
-            </div>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start')} handleClick={moveLeft}>
+                    <GoArrowLeft className={iconClassName}/>
+                </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end')} handleClick={moveRight}>
-                <GoArrowRight className={iconClassName}/>
-            </Button>
+                <div className="flex-col text-center justify-items-center">
+                    <Span2 style={spanClass2}>Move by </Span2>
+                    <input 
+                        className={inputClass} 
+                        placeholder={"pixels"} 
+                        value={pixels} 
+                        type="number"
+                        min="10"
+                        max="200"
+                        step="10"
+                        onChange={(e) => setPixels(e.target.value)}                    
+                    />
+                    <Span2 style={spanClass2}> pixels</Span2>
+                </div>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-end')} handleClick={moveDownLeft}>
-                <GoArrowDownLeft className={iconClassName}/>
-            </Button>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end')} handleClick={moveRight}>
+                    <GoArrowRight className={iconClassName}/>
+                </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' self-end')} handleClick={moveDown}>
-                <GoArrowDown className={iconClassName}/>
-            </Button>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-end')} handleClick={moveDownLeft}>
+                    <GoArrowDownLeft className={iconClassName}/>
+                </Button>
 
-            <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-end')} handleClick={moveDownRight}>
-                <GoArrowDownRight className={iconClassName}/>
-            </Button>
- 
-        </div> 
-    ) 
+                <Button style={buttonClass?.concat(buttonClassName + ' self-end')} handleClick={moveDown}>
+                    <GoArrowDown className={iconClassName}/>
+                </Button>
+
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-end')} handleClick={moveDownRight}>
+                    <GoArrowDownRight className={iconClassName}/>
+                </Button>
+    
+            </div> 
+        </div>
+    );
 }
 
 export default function MoveWindow({ style }: MoveWindowProps) {
-    const { containerClass, h3Class, buttonClass } = style;
+    const { containerClass, h3Class, buttonClass, spanClass1 } = style;
 
     // center the popup window on the screen
     const screenWidth = window.screen.availWidth;
@@ -127,24 +132,23 @@ export default function MoveWindow({ style }: MoveWindowProps) {
     const middleOfScreenX = screenWidth/2;
     const middleOfScreenY = screenHeight/2;
 
-    console.log(middleOfScreenX, middleOfScreenY)
-
     function openWindow() {
         window.open("window-mover", "_target", `popup left=${middleOfScreenX - 200},top=${middleOfScreenY - 200},width=400,height=400`);
     }
 
     return (
-        <Container style={containerClass}>
+        <WidgetContainer style={containerClass}>
             <Header3 style={h3Class}>
-                <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
-                    <code>window</code>
-                    <code className="wrap-anywhere">.moveBy()</code>
-                </div>
+                <code>window.open(), window.moveBy()</code>
             </Header3>
 
             <Button style={buttonClass} handleClick={openWindow}>
-                Move a window!
+                Open a moveable window!
             </Button>
-        </Container>
+
+            <br/>
+
+            <Span1 style={spanClass1}>*The moveable window won't work while in fullscreen or on a mobile device.</Span1>
+        </WidgetContainer>
     );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Style } from "../../types/types";
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 import Paragraph from "../Elements/Paragraph";
 import Span2 from "../Elements/Span2";
@@ -29,11 +29,16 @@ export default function GetSelection( { style }: GetSelectionProps) {
     }, [document.getSelection]);
 
     return (
-        <Container style={containerClass}>
+        <WidgetContainer style={containerClass}>
             <Header3 style={h3Class}>
-                <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
-                    <code>window.</code>
-                    <code className="wrap-anywhere">getSelection()</code>
+                <div className="flex flex-wrap">
+                    <code>document</code>
+                    <code>.addEventListener</code>
+                    <code>('selectionchange', ...),</code>
+                </div>
+                <div className="flex flex-wrap">
+                    <code>document</code>
+                    <code>.getSelection()</code>
                 </div>
             </Header3>
 
@@ -42,15 +47,18 @@ export default function GetSelection( { style }: GetSelectionProps) {
                 <br/>
             </Span1>
 
-            { selection && 
-                <Span2 style={spanClass2}>
-                Your selected text:
-                </Span2>
-            }
-    
-            <Paragraph style={pClass}>
-                {selection}
-            </Paragraph>
-        </Container>
+            <div className="h-full max-h-30 overflow-scroll">
+                { selection && 
+                    <Span2 style={spanClass2}>
+                    Your selected text:
+                    </Span2>
+                }
+                <div className="">
+                    <Paragraph style={pClass}>
+                        {selection}
+                    </Paragraph>
+                </div>
+            </div>
+        </WidgetContainer>
     );
 }

@@ -6,6 +6,8 @@ export type Style = {
   h3Class: string | undefined;
   h4Class: string | undefined;
   inputClass: string | undefined;
+  levelOneClass: string | undefined;
+  levelTwoClass: string | undefined;
   pClass: string | undefined;
   spanClass1: string | undefined;
   spanClass2: string | undefined;

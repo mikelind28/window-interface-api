@@ -26,8 +26,6 @@ type SettingsProps = {
 export default function Settings({ style, setStyle }: SettingsProps) {
   let [isOpen, setIsOpen] = useState(false);
 
-//   const [currentStyle, setCurrentStyle] = useState<Style>(styleClass1);
-
   function open() {
     setIsOpen(true)
   }
@@ -36,8 +34,26 @@ export default function Settings({ style, setStyle }: SettingsProps) {
     setIsOpen(false)
   }
 
+  function setStyleLocalStorage(style: string) {
+    localStorage.setItem('style', style);
+
+    switch (style) {
+        case "styleClass1":
+            setStyle(styleClass1);
+            break;
+
+        case "styleClass2":
+            setStyle(styleClass2);
+            break;
+
+        case "styleClass3":
+            setStyle(styleClass3);
+            break;
+    }
+  }
+
   return (
-    <>
+    <div className="fixed top-4 right-4">
         <IconContext.Provider value={{ className: 'text-3xl text-neutral-200/67 hover:cursor-pointer hover:text-neutral-400/67'}}>
             <div onClick={open}>
                 <BsGearWideConnected />
@@ -72,19 +88,19 @@ export default function Settings({ style, setStyle }: SettingsProps) {
                         {/* buttons for changing the style */}
                         <div className="flex">
                             <div 
-                            className={`w-10 h-10 bg-slate-800 ${style === styleClass1 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 border-2 rounded-lg border-emerald-400 ring-1 ring-lime-200 hover:cursor-pointer`
+                            className={`w-10 h-10 bg-slate-800 ${style === styleClass1 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 border-2 rounded-lg border-emerald-400 ring-1 ring-lime-200 hover:cursor-pointer print:bg-neutral-50 print:border-neutral-600 print:inset-shadow-neutral-950/25 print:ring-neutral-200 print:outline-neutral-200`
                             }
-                            onClick={() => setStyle(styleClass1)}
+                            onClick={() => setStyleLocalStorage("styleClass1")}
                             ></div>
 
                             <div 
-                            className={`w-10 h-10 bg-slate-800 ${style === styleClass2 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 rounded-lg border-2 border-indigo-700 hover:cursor-pointer`} 
-                            onClick={() => setStyle(styleClass2)}
+                            className={`w-10 h-10 bg-slate-800 ${style === styleClass2 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 rounded-lg border-2 border-indigo-700 hover:cursor-pointer print:bg-neutral-50 print:border-neutral-600 print:inset-shadow-neutral-950/25 print:ring-neutral-200 print:outline-neutral-200`} 
+                            onClick={() => setStyleLocalStorage("styleClass2")}
                             ></div>
 
                             <div 
-                            className={`w-10 h-10 bg-slate-800 ${style === styleClass3 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 rounded-lg border-2 border-blue-500 hover:cursor-pointer`} 
-                            onClick={() => setStyle(styleClass3)}></div>
+                            className={`w-10 h-10 bg-slate-800 ${style === styleClass3 ? " drop-shadow-sm drop-shadow-white outline-2 outline-white" : ""} m-2 rounded-lg border-2 border-blue-500 hover:cursor-pointer print:bg-neutral-50 print:border-neutral-600 print:inset-shadow-neutral-950/25 print:ring-neutral-200 print:outline-neutral-200`} 
+                            onClick={() => setStyleLocalStorage("styleClass3")}></div>
                         </div>
 
                         { /* template widget with matching style */ }
@@ -105,6 +121,6 @@ export default function Settings({ style, setStyle }: SettingsProps) {
                 </div>
             </div>
         </Dialog>
-    </>
+    </div>
   )
 }

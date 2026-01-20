@@ -5,7 +5,7 @@ import "./index.css";
 import { useState } from "react";
 
 // style imports
-import { styleClass1 } from "./styles/styles";
+import { styleClass1, styleClass2, styleClass3 } from "./styles/styles";
 
 // Type imports
 import type { Style } from "./types/types";
@@ -13,51 +13,108 @@ import type { Style } from "./types/types";
 // Widget imports
 import Alert from "./components/Widgets/Alert";
 import Confirm from "./components/Widgets/Confirm";
+import Geolocation from "./components/Widgets/Geolocation";
 import GetSelection from "./components/Widgets/GetSelection";
-import RefreshStopwatch from "./components/Widgets/RefreshStopwatch";
+import SetIntervalSinceRefresh from "./components/Widgets/SetIntervalSinceRefresh";
 import ScreenDims from "./components/Widgets/ScreenDims";
 import Settings from "./components/Widgets/Settings";
 import WindowDims from "./components/Widgets/WindowDims";
 import MoveWindow from "./components/Widgets/MoveWindow";
 import Prompt from "./components/Widgets/Prompt";
-import SetInterval from "./components/Widgets/SetInterval";
+import SetIntervalTimer from "./components/Widgets/SetIntervalTimer";
 import CursorCoordinates from "./components/Widgets/CursorCoordinates";
 import ClickCounter from "./components/Widgets/ClickCounter";
+import Print from "./components/Widgets/Print";
+import CutCopyPaste from "./components/Widgets/CutCopyPaste";
+import DocumentTitle from "./components/Widgets/DocumentTitle";
+import Level1Container from "./components/Elements/Level1Container";
+import Level2Container from "./components/Elements/Level2Container";
+import KeyDown from "./components/Widgets/KeyDown";
+import ScrollToTop from "./components/Widgets/ScrollToTop";
 
 function App() {
-  const [currentStyle, setCurrentStyle] = useState<Style>(styleClass1);
+  function getLocalStorageStyle() {
+    const style = localStorage.getItem("style");
+    if (style === null) {
+      localStorage.setItem("style", "styleClass1")
+      return styleClass1;
+    } else if (style === "styleClass1") {
+      return styleClass1;
+    } else if (style === "styleClass2") {
+      return styleClass2;
+    } else if (style === "styleClass3") {
+      return styleClass3;
+    } else {
+      return styleClass1;
+    }
+  }
+
+  const [currentStyle, setCurrentStyle] = useState<Style>(getLocalStorageStyle);
+  const [documentTitle, setDocumentTitle] = useState<string>('Properties and Methods for the Window, Document, and Navigator')
+
+  const isMobile =
+  (navigator as any).userAgentData?.mobile === true ||
+  /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 
   return (
     <div className="m-4">
-      <div className="flex m-2 mb-4 justify-between items-baseline">
-        <h1 className={currentStyle.h1Class}>
-          Window Properties and Methods
-        </h1>
-        <Settings style={currentStyle} setStyle={setCurrentStyle}/>
-      </div>
+      <title>{documentTitle}</title>
 
-      <h2 className={currentStyle.h2Class}>Properties</h2>
-      <div className="mb-8 flex flex-wrap">
-        <WindowDims style={currentStyle} />
-        <ScreenDims style={currentStyle} />
-        <RefreshStopwatch style={currentStyle} />
-      </div>
+      <Settings style={currentStyle} setStyle={setCurrentStyle}/>
 
-      <h2 className={currentStyle.h2Class}>Methods</h2>
-      <div className="mb-8 flex flex-wrap">
-        <Alert style={currentStyle} />
-        <Confirm style={currentStyle} />
-        <Prompt style={currentStyle} />
-        <GetSelection style={currentStyle} />
-        { window.document && <MoveWindow style={currentStyle} />}
-        <SetInterval style={currentStyle} />
-      </div>
+      <h1 className={currentStyle.h1Class}>
+        window
+      </h1>
 
-      <h2 className={currentStyle.h2Class}>Mouse Events</h2>
-      <div className="mb-8 flex flex-wrap">
-        <CursorCoordinates style={currentStyle} />
-        <ClickCounter style={currentStyle} />
-      </div>
+      <Level1Container style={currentStyle.levelOneClass}>
+        <h2 className={currentStyle.h2Class}>Properties:</h2>
+        <Level2Container style={currentStyle.levelTwoClass}>
+          <WindowDims style={currentStyle} />
+          <ScreenDims style={currentStyle} />
+        </Level2Container>
+
+        <h2 className={currentStyle.h2Class}>Methods:</h2>
+        <Level2Container style={currentStyle.levelTwoClass}>
+          <Alert style={currentStyle} />
+          <Confirm style={currentStyle} />
+          { !isMobile && <MoveWindow style={currentStyle} />}
+          <Print style={currentStyle} />
+          <Prompt style={currentStyle} />
+          <SetIntervalTimer style={currentStyle} />
+          <SetIntervalSinceRefresh style={currentStyle} />
+        </Level2Container>
+      </Level1Container>
+      
+      <h1 className={currentStyle.h1Class}>
+        document
+      </h1>
+      
+      <Level1Container style={currentStyle.levelOneClass}>
+        <h2 className={currentStyle.h2Class}>Methods:</h2>
+        <Level2Container style={currentStyle.levelTwoClass}>
+          <ClickCounter style={currentStyle} />
+          <CursorCoordinates style={currentStyle} />
+          <GetSelection style={currentStyle} />
+          <KeyDown style={currentStyle} />
+          <DocumentTitle style={currentStyle} setDocumentTitle={setDocumentTitle}/>
+        </Level2Container>
+      </Level1Container>
+
+      <h1 className={currentStyle.h1Class}>
+        navigator
+      </h1>
+
+      <Level1Container style={currentStyle.levelOneClass}>
+        <h2 className={currentStyle.h2Class}>Methods:</h2>
+        <Level2Container style={currentStyle.levelTwoClass}>
+          <Geolocation style={currentStyle} />
+          <CutCopyPaste style={currentStyle} />
+        </Level2Container>
+      </Level1Container>
+
+      <ScrollToTop style={currentStyle} />
     </div>
   );
 }

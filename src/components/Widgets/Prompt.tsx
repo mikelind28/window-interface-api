@@ -1,6 +1,6 @@
 // Element imports
 import Button from "../Elements/Button";
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 
 // React imports
@@ -26,12 +26,9 @@ export default function Prompt({ style }: PromptProps) {
   }
 
   return (
-    <Container style={containerClass}>
+    <WidgetContainer style={containerClass}>
       <Header3 style={h3Class}>
-        <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
-          <code>window.</code>
-          <code className="wrap-anywhere">prompt()</code>
-        </div>
+        <code>window.prompt()</code>
       </Header3>
 
       <Button style={buttonClass} handleClick={windowPrompt}>
@@ -50,6 +47,6 @@ export default function Prompt({ style }: PromptProps) {
           {userInput}
       </Paragraph>
 
-    </Container>
+    </WidgetContainer>
   );
 }

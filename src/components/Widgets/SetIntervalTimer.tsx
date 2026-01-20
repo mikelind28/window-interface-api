@@ -1,6 +1,5 @@
 // Element imports
-import Button from "../Elements/Button";
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 
 // React imports
@@ -11,11 +10,12 @@ import type { Style } from "../../types/types";
 import Span1 from "../Elements/Span1";
 import Paragraph from "../Elements/Paragraph";
 
-type SetIntervalProps = {
+type SetIntervalTimerProps = {
   style: Style;
 };
 
-export default function SetInterval({ style }: SetIntervalProps) {
+// TODO: add pause, start, reset functionality
+export default function SetIntervalTimer({ style }: SetIntervalTimerProps) {
     const { containerClass, h3Class, inputClass, buttonClass, pClass, spanClass1 } = style;
 
     const [seconds, setSeconds] = useState(5);
@@ -27,15 +27,12 @@ export default function SetInterval({ style }: SetIntervalProps) {
 
     function startCountdown() {
         if (timerStarted) return;
-
         setTimerStarted(true);
     }
 
     useEffect(() => {
         if (inputRef.current) {
             let inputValidity = inputRef.current.checkValidity();
-            console.log('inputValidity: ', inputValidity);
-
             setInputValid(inputValidity);
         }
     }, [seconds]);
@@ -44,11 +41,12 @@ export default function SetInterval({ style }: SetIntervalProps) {
         if (timerStarted && intervalIdRef.current === null) {
             intervalIdRef.current = window.setInterval(() => {
                 setSeconds((seconds) => {
-                    if (seconds === 1) {
+                    console.log('intervalIdRef.current:', intervalIdRef.current);
+                    if (seconds < 2 && intervalIdRef.current !== null) {
                         clearInterval(intervalIdRef.current!);
                         intervalIdRef.current = null;
-                        setTimerStarted(false);
                         window.alert("Time's up! 🚨");
+                        setTimerStarted(false);
                         return 5;
                     }
                     return seconds - 1;
@@ -65,19 +63,21 @@ export default function SetInterval({ style }: SetIntervalProps) {
     }, [timerStarted]);
 
     return (
-        <Container style={containerClass}>
+        <WidgetContainer style={containerClass}>
             <Header3 style={h3Class}>
-                <div className="flex flex-wrap text-sm xs:text-base sm:text-lg">
-                    <code>window</code>
-                    <code className="wrap-anywhere">.setInterval()</code>
-                </div>
+                <code>window</code>
+                <code className="wrap-anywhere">.setInterval()</code>
             </Header3>
 
             { timerStarted 
-                ? <Paragraph style={pClass}>{seconds}</Paragraph>
-                : <div className="inline items-baseline">
-                    <Span1 style={spanClass1}>Set a timer for</Span1>
-                    <div className="inline-flex mx-2 w-13">
+                ? 
+                <Paragraph style={pClass}>
+                    {seconds}
+                </Paragraph>
+                : 
+                <div>
+                    <Span1 style={spanClass1}>Set a timer for...</Span1>
+                    <div className="w-fit flex items-baseline gap-2">
                         <input
                             id="seconds-input"
                             className={inputClass}
@@ -85,13 +85,14 @@ export default function SetInterval({ style }: SetIntervalProps) {
                             type="number"
                             min="1"
                             max="60"
+                            required
                             step="1"
                             value={seconds}
                             onChange={(e) => setSeconds(parseInt(e.target.value))}
                         />
+                        <Span1 style={spanClass1}>seconds</Span1>
                     </div>
-                    <Span1 style={spanClass1}>seconds</Span1>
-                  </div>
+                </div>
             }
 
             <div>
@@ -103,6 +104,6 @@ export default function SetInterval({ style }: SetIntervalProps) {
                     Go!
                 </button>
             </div>
-        </Container>
+        </WidgetContainer>
     );
 }

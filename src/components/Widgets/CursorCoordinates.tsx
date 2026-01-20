@@ -1,5 +1,5 @@
 // Element imports
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 import Header4 from "../Elements/Header4";
 import Paragraph from "../Elements/Paragraph";
@@ -33,20 +33,24 @@ export default function CursorCoordinates({ style }: CursorCoordinatesProps) {
   window.document.addEventListener('mousemove', handleMouseMove);
 
   return (
-    <Container style={containerClass}>
-      <Header3 style={h3Class}>Cursor Coordinates:</Header3>
+    <WidgetContainer style={containerClass}>
+      <Header3 style={h3Class}>
+        <code>document</code>
+        <code>.addEventListener</code>
+        <code>('mousemove', ...)</code>
+      </Header3>
 
-      <Header4 style={h4Class}>X:</Header4>
+      <Header4 style={h4Class}>Mouse coordinate X:</Header4>
       <Paragraph style={pClass}>
         {cursorCoordinates.x}
         <Span1 style={spanClass1}> px</Span1>
       </Paragraph>
 
-      <Header4 style={h4Class}>Y:</Header4>
+      <Header4 style={h4Class}>Mouse coordinate Y:</Header4>
       <Paragraph style={pClass}>
         {cursorCoordinates.y}
         <span className={spanClass1}> px</span>
       </Paragraph>
-    </Container>
+    </WidgetContainer>
   );
 }

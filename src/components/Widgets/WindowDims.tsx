@@ -1,5 +1,5 @@
 // Element imports
-import Container from "../Elements/Container";
+import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
 import Header4 from "../Elements/Header4";
 import Paragraph from "../Elements/Paragraph";
@@ -45,10 +45,12 @@ export default function WindowDims({ style }: WindowDimsProps) {
   }, []);
 
   return (
-    <Container style={containerClass}>
-      <Header3 style={h3Class}>Window Dimensions:</Header3>
+    <WidgetContainer style={containerClass}>
+      <Header3 style={h3Class}>
+        <code>window.innerWidth, window.innerHeight</code>
+      </Header3>
 
-      <Header4 style={h4Class}>Inner Dims (W x H):</Header4>
+      <Header4 style={h4Class}>Window's Inner Dims (W x H):</Header4>
       <Paragraph style={pClass}>
         {windowDims.innerWidth}
         <Span1 style={spanClass1}> px</Span1>
@@ -57,7 +59,12 @@ export default function WindowDims({ style }: WindowDimsProps) {
         <Span1 style={spanClass1}> px</Span1>
       </Paragraph>
 
-      <Header4 style={h4Class}>Outer Dims (W x H):</Header4>
+      <br/>
+
+      <Header3 style={h3Class}>
+        <code>window.outerWidth, window.outerHeight</code>
+      </Header3>
+      <Header4 style={h4Class}>Window's Outer Dims (W x H):</Header4>
       <Paragraph style={pClass}>
         {windowDims.outerWidth}
         <span className={spanClass1}> px</span>
@@ -65,6 +72,6 @@ export default function WindowDims({ style }: WindowDimsProps) {
         {windowDims.outerHeight}
         <span className={spanClass1}> px</span>
       </Paragraph>
-    </Container>
+    </WidgetContainer>
   );
 }
