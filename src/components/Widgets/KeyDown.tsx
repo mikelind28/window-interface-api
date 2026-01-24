@@ -1,7 +1,6 @@
 // Element imports
 import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
-import Paragraph from "../Elements/Paragraph";
 import Span1 from "../Elements/Span1";
 
 // React imports
@@ -16,7 +15,7 @@ type KeyDownProps = {
 };
 
 export default function KeyDown({ style }: KeyDownProps) {
-  const { containerClass, h3Class, h4Class, pClass, spanClass1 } = style;
+  const { containerClass, h3Class, h4Class, spanClass1 } = style;
 
   const [currentKeyDown, setCurrentKeyDown] = useState('');
 

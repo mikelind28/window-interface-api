@@ -19,20 +19,14 @@ type SetIntervalSinceRefreshProps = {
 export default function SetIntervalSinceRefresh({ style }: SetIntervalSinceRefreshProps) {
   const { buttonClass, containerClass, h3Class, pClass, spanClass1 } = style;
 
-  const [startTime, setStartTime] = useState(Date.now());
-  const [currentTime, setCurrentTime] = useState(Date.now());
-
-  let secondsPassed = "0";
-  secondsPassed = ((currentTime - startTime) / 1000).toFixed(0);
+  const [secondsPassed, setSecondsPassed] = useState(0);
 
   useEffect(() => {
-    setStartTime(Date.now());
-    setCurrentTime(Date.now());
+    const id = setInterval(() => {
+      setSecondsPassed(s => s + 1);
+    }, 1000);
 
-    window.setInterval(() => setCurrentTime(Date.now), 1000);
-
-    let secondsPassed = "0";
-    secondsPassed = ((currentTime - startTime) / 100).toFixed(0);
+    return () => clearInterval(id);
   }, []);
 
   return (
@@ -47,7 +41,7 @@ export default function SetIntervalSinceRefresh({ style }: SetIntervalSinceRefre
       <Paragraph style={pClass}>
         {secondsPassed}
         <Span1 style={spanClass1}>
-          {secondsPassed === "1" ? " second" : " seconds"}
+          {secondsPassed.toString() === "1" ? " second" : " seconds"}
         </Span1>
       </Paragraph>
 
