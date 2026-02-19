@@ -16,6 +16,7 @@ export default function Input({
   return (
     <input
       placeholder={placeholder}
+      aria-label={placeholder}
       className={style}
       value={value}
       onChange={(e) => onChange(e.target.value)}

@@ -33,7 +33,7 @@ export const styleClass1 = {
   inputClass:
     `block min-w-10 w-[100%] grow my-1 py-1 pr-3 pl-1 text-sm text-slate-950 bg-cyan-50 rounded-sm caret-teal-500 focus:ring-2 focus:ring-teal-500 placeholder:text-gray-400 focus:outline-none sm:text-base invalid:ring-2 invalid:ring-red-400  ${printClass.inputClass}`,
   buttonClass:
-    `bg-teal-300 my-2 py-1 px-4 text-slate-950 outline-2 outline-offset-2 outline-teal-300 rounded-lg hover:bg-teal-500 active:bg-teal-600 ${printClass.buttonClass}`,
+    `bg-teal-300 my-2 py-1 px-4 text-slate-950 outline-2 outline-offset-2 outline-teal-300 rounded-lg hover:bg-teal-500 active:bg-teal-600 focus:outline-blue-500 ${printClass.buttonClass}`,
 }
 
 export const styleClass2 = {
@@ -53,7 +53,7 @@ export const styleClass2 = {
   inputClass:
     `block min-w-0 w-[100%] grow my-1 py-1 pr-3 pl-1 text-base text-slate-950 bg-cyan-50 rounded-sm caret-blue-400 focus:ring-2 focus:ring-fuchsia-500 placeholder:text-slate-400 focus:outline-none sm:text-sm/6 invalid:ring-2 invalid:ring-red-400 ${printClass.inputClass}`,
   buttonClass:
-    `bg-purple-300 my-2 py-1 px-4 text-slate-950 outline-2 outline-offset-2 outline-purple-300 rounded-lg hover:bg-purple-400 active:bg-purple-500 ${printClass.buttonClass}`,
+    `bg-purple-300 my-2 py-1 px-4 text-slate-950 outline-2 outline-offset-2 outline-purple-300 rounded-lg hover:bg-purple-400 active:bg-purple-500 focus:outline-blue-500 ${printClass.buttonClass}`,
 }
 
 export const styleClass3 = {
@@ -73,7 +73,7 @@ export const styleClass3 = {
   inputClass:
     `my-1 block min-w-0 grow rounded-sm bg-cyan-50 py-1 pr-3 pl-1 text-base text-slate-950 caret-lime-600 focus:ring-2 focus:ring-lime-600 placeholder:text-zinc-500 focus:outline-none sm:text-sm/6 invalid:ring-2 invalid:ring-red-400 ${printClass.inputClass}`,
   buttonClass:
-    `my-2 rounded-lg bg-amber-300 px-4 py-1 text-slate-950 outline-2 outline-offset-2 outline-orange-300 hover:bg-amber-400 active:bg-amber-500 ${printClass.buttonClass}`,
+    `my-2 rounded-lg bg-amber-300 px-4 py-1 text-slate-950 outline-2 outline-offset-2 outline-orange-300 hover:bg-amber-400 active:bg-amber-500 focus:outline-blue-500 ${printClass.buttonClass}`,
 }
 
 export const miniMoverStyle = {
@@ -89,5 +89,5 @@ export const miniMoverStyle = {
   spanClass2: "inline text-xl font-extralight text-lime-600 text-shadow-none",
   inputClass: "block  w-13 p-1 text-base text-slate-950 bg-blue-50 rounded-sm caret-blue-500 focus:ring-2 focus:ring-blue-500 placeholder:text-gray-400 focus:outline-none invalid:border-red-500",
   buttonClass:
-    "bg-blue-300 m-2 p-4 text-slate-950 outline-2 outline-offset-2 outline-slate-300 rounded-lg hover:bg-slate-500 active:bg-slate-600",
+    "bg-blue-300 m-2 p-4 text-slate-950 outline-2 outline-offset-2 outline-slate-300 rounded-lg hover:bg-slate-500 active:bg-slate-600 focus:outline-blue-500",
 }

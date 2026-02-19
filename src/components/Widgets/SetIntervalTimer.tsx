@@ -90,7 +90,7 @@ export default function SetIntervalTimer({ style }: SetIntervalTimerProps) {
                             value={seconds}
                             onChange={(e) => setSeconds(parseInt(e.target.value))}
                         />
-                        <Span1 style={spanClass1}>seconds</Span1>
+                        <label htmlFor="seconds-input"><Span1 style={spanClass1}>seconds</Span1></label>
                     </div>
                 </div>
             }

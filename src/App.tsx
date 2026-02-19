@@ -59,7 +59,7 @@ function App() {
   );
 
   return (
-    <div className="m-4">
+    <main className="m-4">
       <title>{documentTitle}</title>
 
       <Settings style={currentStyle} setStyle={setCurrentStyle}/>
@@ -115,7 +115,7 @@ function App() {
       </Level1Container>
 
       <ScrollToTop style={currentStyle} />
-    </div>
+    </main>
   );
 }
 

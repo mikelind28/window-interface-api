@@ -100,14 +100,18 @@ export default function CutCopyPaste({ style }: CutCopyPasteType) {
                 </div>
             </Header3>
 
-            <Span1 style={spanClass1}>
-                Cut, copy, and paste text from the textarea box below.
-                <br/>
-            </Span1>
+            <label htmlFor="cut-copy-paste-text-area">
+                <Span1 style={spanClass1}>
+                    Cut, copy, and paste text from the textarea box below.
+                    <br/>
+                </Span1>
+            </label>
 
             <textarea 
+                id="cut-copy-paste-text-area"
                 ref={textareaRef}
                 placeholder="Try it out!"
+                aria-label="Try it out!"
                 value={text}
                 onChange={(event) => setText(event.target.value)}
                 className={inputClass}
