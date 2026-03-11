@@ -133,7 +133,7 @@ export default function MoveWindow({ style }: MoveWindowProps) {
     const middleOfScreenY = screenHeight/2;
 
     function openWindow() {
-        window.open("window-mover", "_target", `popup left=${middleOfScreenX - 200},top=${middleOfScreenY - 200},width=400,height=400`);
+        window.open("/window-mover", "_blank", `popup left=${middleOfScreenX - 200},top=${middleOfScreenY - 200},width=400,height=400`);
     }
 
     return (
