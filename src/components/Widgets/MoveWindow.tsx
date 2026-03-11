@@ -61,7 +61,7 @@ export function MiniMover({ style }: MiniMoverProps) {
         window.moveBy((parseInt(pixels) * -1), parseInt(pixels));
     }
 
-    const iconClassName = " justify-self-center text-2xl";
+    const iconClassName = "text-2xl";
     const buttonClassName = " w-20 h-20";
 
     return (
@@ -70,19 +70,19 @@ export function MiniMover({ style }: MiniMoverProps) {
 
             <div className="bg-slate-950 min-w-70 min-h-70 p-4 h-screen grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center">
 
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-start')} handleClick={moveUpLeft}>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-start flex items-center justify-center')} handleClick={moveUpLeft}>
                     <GoArrowUpLeft className={iconClassName}/>
                 </Button>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' self-start')} handleClick={moveUp}>
+                <Button style={buttonClass?.concat(buttonClassName + ' self-start flex items-center justify-center')} handleClick={moveUp}>
                     <GoArrowUp className={iconClassName}/>
                 </Button>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-start')} handleClick={moveUpRight}>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-start flex items-center justify-center')} handleClick={moveUpRight}>
                     <GoArrowUpRight className={iconClassName}/>
                 </Button>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start')} handleClick={moveLeft}>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start flex items-center justify-center')} handleClick={moveLeft}>
                     <GoArrowLeft className={iconClassName}/>
                 </Button>
 
@@ -101,19 +101,19 @@ export function MiniMover({ style }: MiniMoverProps) {
                     <Span2 style={spanClass2}> pixels</Span2>
                 </div>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end')} handleClick={moveRight}>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end flex items-center justify-center')} handleClick={moveRight}>
                     <GoArrowRight className={iconClassName}/>
                 </Button>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-end')} handleClick={moveDownLeft}>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start flex items-center justify-center self-end')} handleClick={moveDownLeft}>
                     <GoArrowDownLeft className={iconClassName}/>
                 </Button>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' self-end')} handleClick={moveDown}>
+                <Button style={buttonClass?.concat(buttonClassName + ' self-end flex items-center justify-center')} handleClick={moveDown}>
                     <GoArrowDown className={iconClassName}/>
                 </Button>
 
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-end')} handleClick={moveDownRight}>
+                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-end flex items-center justify-center')} handleClick={moveDownRight}>
                     <GoArrowDownRight className={iconClassName}/>
                 </Button>
     
