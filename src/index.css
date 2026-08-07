@@ -288,3 +288,104 @@ button:focus {
   border-color: var(--color-blue-500);
   box-shadow: inset 0 1px 2px rgb(2 6 23 / 0.5);
 }
+
+@media print {
+  /* containerClass */
+  .container {
+    background-color: #fafafa; /* bg-neutral-50 */
+    border-color: #525252;     /* border-neutral-600 */
+    outline-color: #e5e5e5;    /* outline-neutral-200 */
+
+    /* ring-neutral-200 — Tailwind's ring uses a box-shadow variable stack.
+       Plain-CSS equivalent (adjust width/offset to match your ring-width utility): */
+    box-shadow: 0 0 0 3px #e5e5e5;
+
+    /* inset-shadow-neutral-950/25 — Tailwind v4 inset shadow utility,
+       25% opacity black-ish neutral-950. Roughly: */
+    box-shadow: 0 0 0 3px #e5e5e5, inset 0 2px 4px 0 rgb(10 10 10 / 0.25);
+  }
+
+  /* h1Class */
+  h1 {
+    color: #171717; /* text-neutral-900 */
+  }
+
+  /* h2Class */
+  h2 {
+    color: #262626; /* text-neutral-800 */
+  }
+
+  /* h3Class */
+  h3 {
+    color: #0a0a0a;   /* text-neutral-950 */
+    text-shadow: none; /* text-shadow-none */
+  }
+
+  /* h4Class */
+  h4 {
+    color: #262626; /* text-neutral-800 */
+  }
+
+  /* pClass */
+  p {
+    color: #404040;    /* text-neutral-700 */
+    text-shadow: none; /* text-shadow-none */
+  }
+
+  /* spanClass1 */
+  .span-1 {
+    color: #d4d4d4; /* text-neutral-300 */
+  }
+
+  /* spanClass2 */
+  .span-2 {
+    color: #262626; /* text-neutral-800 */
+  }
+
+  .span-3 { 
+    color: #262626;
+  }
+
+  /* inputClass */
+  input {
+    color: #171717;         /* text-neutral-900 */
+    box-shadow: 0 0 0 1px #737373; /* ring-neutral (see note below) */
+    caret-color: #737373;   /* caret-neutral-500 */
+  }
+  input::placeholder {
+    color: #a3a3a3; /* placeholder:text-neutral-400 */
+  }
+
+  /* buttonClass */
+  button {
+    background-color: #f5f5f5; /* bg-neutral-100 */
+    color: #171717;            /* text-neutral-900 */
+    outline-color: #737373;    /* outline-neutral-500 */
+  }
+
+  .level-one {
+    border-color: #171717;
+  }
+  
+  .level-two {
+    border-color: #737373;
+  }
+
+  [data-theme="style-1"] .container {
+    border-color: #525252;
+    box-shadow:
+      inset 0 1px 2px rgb(0 0 0 / 0.5),
+      0 0 0 1px #737373;
+  }
+  
+  [data-theme="style-2"] .container {
+    border-color: transparent;
+    outline: 2px solid #525252;
+    outline-offset: 3px;
+  }
+  
+  [data-theme="style-3"] .container {
+    border-color: #525252;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.5);
+  }
+}

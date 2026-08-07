@@ -20,7 +20,7 @@ export default function ScreenDims() {
       width: window.screen.width,
       height: window.screen.height,
     });
-  }, [window.screen]);
+  }, []);
 
   return (
     <WidgetContainer>

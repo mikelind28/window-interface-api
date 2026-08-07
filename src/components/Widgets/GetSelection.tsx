@@ -11,10 +11,10 @@ export default function GetSelection() {
 
   useEffect(() => {
     document.addEventListener("selectionchange", () => {
-      let selection = document.getSelection()?.toString();
+      const selection = document.getSelection()?.toString();
       setSelection(selection);
     });
-  }, [document.getSelection]);
+  }, []);
 
   return (
     <WidgetContainer>
