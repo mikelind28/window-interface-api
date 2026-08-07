@@ -38,6 +38,10 @@ export function getLocalStorageTheme(): Theme {
   return "style-1";
 }
 
+interface NavigatorUAData {
+  mobile?: boolean;
+}
+
 function App() {
   const [theme, setTheme] = useState<Theme>(getLocalStorageTheme);
   const [documentTitle, setDocumentTitle] = useState<string>(
@@ -45,10 +49,11 @@ function App() {
   );
 
   const isMobile =
-    (navigator as any).userAgentData?.mobile === true ||
-    /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    );
+  (navigator as Navigator & { userAgentData?: NavigatorUAData }).userAgentData
+    ?.mobile === true ||
+  /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  );
 
   return (
     <main className="m-2 xxs:m-4" data-theme={theme}>

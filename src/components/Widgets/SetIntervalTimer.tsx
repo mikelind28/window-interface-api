@@ -27,7 +27,7 @@ export default function SetIntervalTimer() {
 
   useEffect(() => {
     if (inputRef.current) {
-      let inputValidity = inputRef.current.checkValidity();
+      const inputValidity = inputRef.current.checkValidity();
       setInputValid(inputValidity);
     }
   }, [seconds]);
