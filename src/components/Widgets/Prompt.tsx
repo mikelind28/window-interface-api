@@ -7,46 +7,51 @@ import Header3 from "../Elements/Header3";
 import { useState } from "react";
 
 // Type imports
-import type { Style } from "../../types/types";
 import Span2 from "../Elements/Span2";
 import Paragraph from "../Elements/Paragraph";
+import WidgetDescription from "../Elements/WidgetDescripiton";
 
-type PromptProps = {
-  style: Style;
-};
-
-export default function Prompt({ style }: PromptProps) {
-  const { buttonClass, containerClass, h3Class, pClass, spanClass2 } = style;
-
+export default function Prompt() {
   const [userInput, setUserInput] = useState<string | null>(null);
 
   function windowPrompt() {
-    const prompt = window.prompt("Enter something below to display it in the window.prompt() widget.");
+    const prompt = window.prompt(
+      "Enter something below to display it in the window.prompt() widget.",
+    );
     setUserInput(prompt);
   }
 
   return (
-    <WidgetContainer style={containerClass}>
-      <Header3 style={h3Class}>
+    <WidgetContainer>
+      <Header3>
         <code>window.prompt()</code>
       </Header3>
 
-      <Button style={buttonClass} handleClick={windowPrompt}>
-        Prompt...
-      </Button>
+      <Button handleClick={windowPrompt}>Prompt...</Button>
 
-      { userInput &&
+      {userInput && (
         <div>
-        <Span2 style={spanClass2}>
-          Your input:
-        </Span2>
+          <Span2>Your input:</Span2>
         </div>
-      }
+      )}
 
-      <Paragraph style={pClass}>
-          {userInput}
-      </Paragraph>
+      <Paragraph>{userInput}</Paragraph>
 
+      <WidgetDescription>
+        <blockquote>
+          <p className="span-3">
+            <code>window.prompt()</code> instructs the browser to display a dialog with an optional message prompting the user to input some text, and to wait until the user either submits the text or cancels the dialog.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt"
+          >
+            Window: prompt() method - Web APIs | MDN
+          </a>
+        </cite>
+      </WidgetDescription>
     </WidgetContainer>
   );
 }

@@ -7,48 +7,57 @@ import Span1 from "../Elements/Span1";
 import { useEffect, useState } from "react";
 
 // Type imports
-import type { Style } from "../../types/types";
 import Header4 from "../Elements/Header4";
+import WidgetDescription from "../Elements/WidgetDescripiton";
 
-type KeyDownProps = {
-  style: Style;
-};
-
-export default function KeyDown({ style }: KeyDownProps) {
-  const { containerClass, h3Class, h4Class, spanClass1 } = style;
-
-  const [currentKeyDown, setCurrentKeyDown] = useState('');
+export default function KeyDown() {
+  const [currentKeyDown, setCurrentKeyDown] = useState("");
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-        setCurrentKeyDown(event.key);
+      setCurrentKeyDown(event.key);
     }
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-    }
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   return (
-    <WidgetContainer style={containerClass}>
-      <Header3 style={h3Class}>
+    <WidgetContainer>
+      <Header3>
         <code>document</code>
         <code>.addEventListener</code>
         <code>('keydown', ...)</code>
       </Header3>
 
-      <Header4 style={h4Class}>Press a keyboard key!</Header4>
+      <Header4>Press a keyboard key!</Header4>
 
-      <Span1 style={spanClass1}>
-        You pressed: 
-      </Span1> 
+      <Span1>You pressed:</Span1>
 
-      <br/>
+      <br />
 
-      <kbd className="bg-neutral-200 rounded-sm border-1 border-neutral-500 drop-shadow-neutral-800 inset-shadow-neutral-50 text-neutral-900 inline-block font-bold px-2 mt-1">{currentKeyDown}</kbd>
+      <kbd className="mt-1 inline-block rounded-sm border border-neutral-500 bg-neutral-200 px-2 font-bold text-neutral-900 inset-shadow-neutral-50 drop-shadow-neutral-800">
+        {currentKeyDown}
+      </kbd>
 
+      <WidgetDescription>
+        <blockquote>
+          <p className="span-3">
+            The <code>keydown</code> event is fired when a key is pressed.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event"
+          >
+            Element: keydown event - Web APIs | MDN
+          </a>
+        </cite>
+      </WidgetDescription>
     </WidgetContainer>
   );
 }

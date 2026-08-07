@@ -2,12 +2,11 @@ import type { ReactNode } from "react";
 
 type WidgetContainerProps = {
   children: ReactNode | ReactNode[];
-  style: string | undefined;
 };
 
-export default function WidgetContainer({ children, style }: WidgetContainerProps) {
+export default function WidgetContainer({ children }: WidgetContainerProps) {
   return (
-    <div className={style}>
+    <div className="container">
       {children}
     </div>
   );

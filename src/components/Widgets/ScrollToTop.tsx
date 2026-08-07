@@ -1,23 +1,19 @@
-import type { Style } from "../../types/types";
 import Button from "../Elements/Button";
 
-type ScrollToTopProps = {
-    style: Style;
-}
-
-export default function ScrollToTop({ style }: ScrollToTopProps) {
-    const { buttonClass } = style;
-
-    return (
-        <Button 
-            style={buttonClass} 
-            handleClick={() => window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "smooth",
-            })}
-        >
-            Scroll to top
-        </Button>
-    );
+export default function ScrollToTop() {
+  return (
+    <div className='my-4'>
+      <Button
+        handleClick={() =>
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          })
+        }
+      >
+        Scroll to top
+      </Button>
+    </div>
+  );
 }

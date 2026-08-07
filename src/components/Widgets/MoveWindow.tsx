@@ -2,153 +2,215 @@
 import Button from "../Elements/Button";
 import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
-
-// Icon imports 
-import { GoArrowDown, GoArrowUp, GoArrowLeft, GoArrowRight, GoArrowUpLeft, GoArrowUpRight, GoArrowDownLeft, GoArrowDownRight } from "react-icons/go";
-
-// Type imports
-import type { Style } from "../../types/types";
-import { useState } from "react";
 import Span2 from "../Elements/Span2";
 import Span1 from "../Elements/Span1";
 
-type MoveWindowProps = {
-  style: Style;
-};
+// Icon imports
+import {
+  GoArrowDown,
+  GoArrowUp,
+  GoArrowLeft,
+  GoArrowRight,
+  GoArrowUpLeft,
+  GoArrowUpRight,
+  GoArrowDownLeft,
+  GoArrowDownRight,
+} from "react-icons/go";
 
-type MiniMoverProps = {
-    style: Style;
-};
+import { useEffect, useState } from "react";
+import type { Theme } from "../../types/types";
+import WidgetDescription from "../Elements/WidgetDescripiton";
 
-export function MiniMover({ style }: MiniMoverProps) {
-    const {
-        buttonClass,
-        inputClass,
-        spanClass2
-    } = style;
-
-    const [pixels, setPixels] = useState("20");
-
-    function moveLeft() {
-        window.moveBy((parseInt(pixels) * -1), 0);
-    }
-
-    function moveUpLeft() {
-        window.moveBy((parseInt(pixels) * -1), (parseInt(pixels) * -1));
-    }
-
-    function moveUp() {
-        window.moveBy(0, (parseInt(pixels) * -1));
-    }
-
-    function moveUpRight() {
-        window.moveBy(parseInt(pixels), (parseInt(pixels) * -1));
-    }
-
-    function moveRight() {
-        window.moveBy(parseInt(pixels), 0);
-    }
-
-    function moveDownRight() {
-        window.moveBy(parseInt(pixels), parseInt(pixels));
-    }
-
-    function moveDown() {
-        window.moveBy(0, parseInt(pixels));
-    }
-
-    function moveDownLeft() {
-        window.moveBy((parseInt(pixels) * -1), parseInt(pixels));
-    }
-
-    const iconClassName = "text-2xl";
-    const buttonClassName = " w-20 h-20";
-
-    return (
-        <div>
-            <title>window.moveBy()</title>
-
-            <div className="bg-slate-950 min-w-70 min-h-70 p-4 h-screen grid grid-cols-3 grid-rows-3 gap-4 justify-items-center items-center">
-
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start self-start flex items-center justify-center')} handleClick={moveUpLeft}>
-                    <GoArrowUpLeft className={iconClassName}/>
-                </Button>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' self-start flex items-center justify-center')} handleClick={moveUp}>
-                    <GoArrowUp className={iconClassName}/>
-                </Button>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-start flex items-center justify-center')} handleClick={moveUpRight}>
-                    <GoArrowUpRight className={iconClassName}/>
-                </Button>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start flex items-center justify-center')} handleClick={moveLeft}>
-                    <GoArrowLeft className={iconClassName}/>
-                </Button>
-
-                <div className="flex-col text-center justify-items-center">
-                    <Span2 style={spanClass2}>Move by </Span2>
-                    <input 
-                        className={inputClass} 
-                        placeholder={"pixels"} 
-                        value={pixels} 
-                        type="number"
-                        min="10"
-                        max="200"
-                        step="10"
-                        onChange={(e) => setPixels(e.target.value)}                    
-                    />
-                    <Span2 style={spanClass2}> pixels</Span2>
-                </div>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end flex items-center justify-center')} handleClick={moveRight}>
-                    <GoArrowRight className={iconClassName}/>
-                </Button>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-start flex items-center justify-center self-end')} handleClick={moveDownLeft}>
-                    <GoArrowDownLeft className={iconClassName}/>
-                </Button>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' self-end flex items-center justify-center')} handleClick={moveDown}>
-                    <GoArrowDown className={iconClassName}/>
-                </Button>
-
-                <Button style={buttonClass?.concat(buttonClassName + ' justify-self-end self-end flex items-center justify-center')} handleClick={moveDownRight}>
-                    <GoArrowDownRight className={iconClassName}/>
-                </Button>
-    
-            </div> 
-        </div>
-    );
+function getLocalStorageTheme(): Theme {
+  const theme = localStorage.getItem("theme");
+  if (theme === "style-1" || theme === "style-2" || theme === "style-3") {
+    return theme;
+  }
+  return "style-1";
 }
 
-export default function MoveWindow({ style }: MoveWindowProps) {
-    const { containerClass, h3Class, buttonClass, spanClass1 } = style;
+export function MiniMover() {
+  const [theme, setTheme] = useState<Theme>(getLocalStorageTheme);
 
-    // center the popup window on the screen
-    const screenWidth = window.screen.availWidth;
-    const screenHeight = window.screen.availHeight;
-
-    const middleOfScreenX = screenWidth/2;
-    const middleOfScreenY = screenHeight/2;
-
-    function openWindow() {
-        window.open("/window-mover", "_blank", `popup left=${middleOfScreenX - 200},top=${middleOfScreenY - 200},width=400,height=400`);
+  useEffect(() => {
+    function handleStorageChange(e: StorageEvent) {
+      if (e.key === "theme" && e.newValue) {
+        setTheme(e.newValue as Theme);
+      }
     }
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
 
-    return (
-        <WidgetContainer style={containerClass}>
-            <Header3 style={h3Class}>
-                <code>window.open(), window.moveBy()</code>
-            </Header3>
+  const [pixels, setPixels] = useState("20");
 
-            <Button style={buttonClass} handleClick={openWindow}>
-                Open a moveable window!
-            </Button>
+  function moveLeft() {
+    window.moveBy(parseInt(pixels) * -1, 0);
+  }
 
-            <br/>
+  function moveUpLeft() {
+    window.moveBy(parseInt(pixels) * -1, parseInt(pixels) * -1);
+  }
 
-            <Span1 style={spanClass1}>*The moveable window won't work while in fullscreen or on a mobile device.</Span1>
-        </WidgetContainer>
+  function moveUp() {
+    window.moveBy(0, parseInt(pixels) * -1);
+  }
+
+  function moveUpRight() {
+    window.moveBy(parseInt(pixels), parseInt(pixels) * -1);
+  }
+
+  function moveRight() {
+    window.moveBy(parseInt(pixels), 0);
+  }
+
+  function moveDownRight() {
+    window.moveBy(parseInt(pixels), parseInt(pixels));
+  }
+
+  function moveDown() {
+    window.moveBy(0, parseInt(pixels));
+  }
+
+  function moveDownLeft() {
+    window.moveBy(parseInt(pixels) * -1, parseInt(pixels));
+  }
+
+  const iconClassName = "text-2xl";
+
+  return (
+    <main data-theme={theme}>
+      <title>window.moveBy()</title>
+
+      <div className="grid h-screen min-h-70 min-w-70 grid-cols-3 grid-rows-3 items-center justify-items-center gap-4 bg-slate-950 p-4">
+        <button
+          className="flex items-center justify-center self-start justify-self-start size-20"
+          onClick={moveUpLeft}
+        >
+          <GoArrowUpLeft className={iconClassName} />
+        </button>
+
+        <button className="flex items-center justify-center self-start size-20" onClick={moveUp}>
+          <GoArrowUp className={iconClassName} />
+        </button>
+
+        <button
+          className="flex items-center justify-center self-start justify-self-end size-20"
+          onClick={moveUpRight}
+        >
+          <GoArrowUpRight className={iconClassName} />
+        </button>
+
+        <button
+          className="flex items-center justify-center justify-self-start size-20"
+          onClick={moveLeft}
+        >
+          <GoArrowLeft className={iconClassName} />
+        </button>
+
+        <div className="flex-col justify-items-center text-center">
+          <Span2>Move by </Span2>
+          <input
+            placeholder={"pixels"}
+            value={pixels}
+            type="number"
+            min="10"
+            max="200"
+            step="10"
+            onChange={(e) => setPixels(e.target.value)}
+          />
+          <Span2> pixels</Span2>
+        </div>
+
+        <button
+          className="flex items-center justify-center justify-self-end size-20"
+          onClick={moveRight}
+        >
+          <GoArrowRight className={iconClassName} />
+        </button>
+
+        <button
+          className="flex items-center justify-center self-end justify-self-start size-20"
+          onClick={moveDownLeft}
+        >
+          <GoArrowDownLeft className={iconClassName} />
+        </button>
+
+        <button className="flex items-center justify-center self-end size-20" onClick={moveDown}>
+          <GoArrowDown className={iconClassName} />
+        </button>
+
+        <button
+          className="flex items-center justify-center self-end justify-self-end size-20"
+          onClick={moveDownRight}
+        >
+          <GoArrowDownRight className={iconClassName} />
+        </button>
+      </div>
+    </main>
+  );
+}
+
+export default function MoveWindow() {
+  // center the popup window on the screen
+  const screenWidth = window.screen.availWidth;
+  const screenHeight = window.screen.availHeight;
+
+  const middleOfScreenX = screenWidth / 2;
+  const middleOfScreenY = screenHeight / 2;
+
+  function openWindow() {
+    window.open(
+      "/window-mover",
+      "_blank",
+      `popup left=${middleOfScreenX - 200},top=${middleOfScreenY - 200},width=400,height=400`,
     );
+  }
+
+  return (
+    <WidgetContainer>
+      <Header3>
+        <code>window.open(), window.moveBy()</code>
+      </Header3>
+
+      <Button handleClick={openWindow}>Open a moveable window!</Button>
+
+      <br />
+
+      <Span1>
+        *The moveable window won't work while in fullscreen or on a mobile
+        device.
+      </Span1>
+      
+      <WidgetDescription>
+        <blockquote>
+          <p className="span-3">
+            The <code>open()</code> method of the Window interface loads a specified resource into a new or existing browsing context (that is, a tab, a window, or an iframe) under a specified name.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/open"
+          >
+            Window: open() method - Web APIs | MDN
+          </a>
+        </cite>
+        <div className="h-4"/>
+        <blockquote>
+          <p className="span-3">
+            The <code>moveBy()</code> method of the Window interface moves the current window by a specified amount.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/moveBy"
+          >
+            Window: moveBy() method - Web APIs | MDN
+          </a>
+        </cite>
+      </WidgetDescription>
+    </WidgetContainer>
+  );
 }
