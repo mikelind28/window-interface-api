@@ -6,43 +6,48 @@ import Input from "../Elements/Input";
 
 // React imports
 import { useState } from "react";
+import WidgetDescription from "../Elements/WidgetDescripiton";
 
-// Type imports
-import type { Style } from "../../types/types";
-
-type AlertProps = {
-  style: Style;
-};
-
-export default function Alert({ style }: AlertProps) {
-  const { containerClass, h3Class, inputClass, buttonClass } = style;
-
+export default function Alert() {
   const [alertText, setAlertText] = useState("");
 
   function windowAlert() {
     if (alertText === "") {
-        window.alert("Alert! 🚨");
+      window.alert("Alert! 🚨");
     } else {
-        window.alert(alertText);
+      window.alert(alertText);
     }
   }
 
   return (
-    <WidgetContainer style={containerClass}>
-      <Header3 style={h3Class}>
-          <code>window.alert()</code>
+    <WidgetContainer>
+      <Header3>
+        <code>window.alert()</code>
       </Header3>
 
       <Input
         placeholder="Customize your alert!"
-        style={inputClass}
         onChange={setAlertText}
         value={alertText}
       />
 
-      <Button style={buttonClass} handleClick={windowAlert}>
-        Alert!
-      </Button>
+      <Button handleClick={windowAlert}>Alert!</Button>
+
+      <WidgetDescription>
+        <blockquote>
+          <p className="span-3">
+            <code>window.alert()</code> instructs the browser to display a dialog with an optional message, and to wait until the user dismisses the dialog.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/alert"
+          >
+            Window: alert() method - Web APIs | MDN
+          </a>
+        </cite>
+      </WidgetDescription>
     </WidgetContainer>
   );
 }

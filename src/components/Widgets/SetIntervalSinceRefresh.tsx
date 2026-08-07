@@ -8,46 +8,56 @@ import Span1 from "../Elements/Span1";
 import { useEffect, useState } from "react";
 
 // Type imports
-import type { Style } from "../../types/types";
 import Button from "../Elements/Button";
-
-type SetIntervalSinceRefreshProps = {
-  style: Style;
-};
+import WidgetDescription from "../Elements/WidgetDescripiton";
 
 // TODO: update this to read "_ minutes and _seconds"
-export default function SetIntervalSinceRefresh({ style }: SetIntervalSinceRefreshProps) {
-  const { buttonClass, containerClass, h3Class, pClass, spanClass1 } = style;
-
+export default function SetIntervalSinceRefresh() {
   const [secondsPassed, setSecondsPassed] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setSecondsPassed(s => s + 1);
+      setSecondsPassed((s) => s + 1);
     }, 1000);
 
     return () => clearInterval(id);
   }, []);
 
   return (
-    <WidgetContainer style={containerClass}>
-      <Header3 style={h3Class}>
+    <WidgetContainer>
+      <Header3>
         <code>window</code>
-        <code className="wrap-anywhere">.setInterval()</code>
+        <code className="wrap-anywhere">.setInterval(), window</code>
+        <code>.location</code>
+        <code className="wrap-anywhere">.reload()</code>
       </Header3>
 
-      <Span1 style={spanClass1}>Time since refresh:</Span1>
+      <Span1>Time since refresh:</Span1>
 
-      <Paragraph style={pClass}>
+      <Paragraph>
         {secondsPassed}
-        <Span1 style={spanClass1}>
+        <Span1>
           {secondsPassed.toString() === "1" ? " second" : " seconds"}
         </Span1>
       </Paragraph>
 
-      <Button style={buttonClass} handleClick={() => window.location.reload()}>
-        Refresh
-      </Button>
+      <Button handleClick={() => window.location.reload()}>Refresh</Button>
+
+      <WidgetDescription>
+        <blockquote>
+          <p className="span-3">
+            The <code>reload()</code> method of the Location interface reloads the current URL, like the Refresh button.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Location/reload"
+          >
+            Location: reload() method - Web APIs | MDN
+          </a>
+        </cite>
+      </WidgetDescription>
     </WidgetContainer>
   );
 }

@@ -15,8 +15,7 @@ import App from "./App.tsx";
 import ErrorPage from "./components/Widgets/ErrorPage.tsx";
 import { MiniMover } from "./components/Widgets/MoveWindow.tsx";
 
-import { miniMoverStyle } from "./styles/styles.ts";
-
+// TODO: different error page for MiniMover
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +24,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/window-mover",
-    element: <MiniMover style={miniMoverStyle}/>
+    element: <MiniMover />,
+    errorElement: <ErrorPage />,
   }
 ]);
 

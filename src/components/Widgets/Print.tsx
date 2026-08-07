@@ -1,25 +1,32 @@
-import type { Style } from "../../types/types";
 import Button from "../Elements/Button";
 import WidgetContainer from "../Elements/WidgetContainer";
 import Header3 from "../Elements/Header3";
+import WidgetDescription from "../Elements/WidgetDescripiton";
 
-type PrintProps = {
-    style: Style;
-}
+export default function Print() {
+  return (
+    <WidgetContainer>
+      <Header3>
+        <code>window.print()</code>
+      </Header3>
 
-export default function Print({ style }: PrintProps) {
-    const { buttonClass, containerClass, h3Class } = style;
+      <Button handleClick={() => window.print()}>Print...</Button>
 
-    return (
-        <WidgetContainer style={containerClass}>
-            <Header3 style={h3Class}>
-                <code>window.print()</code>
-            </Header3>
-    
-            <Button style={buttonClass} handleClick={() => window.print()}>
-            Print...
-            </Button>
-    
-        </WidgetContainer>
-    );
+      <WidgetDescription>
+        <blockquote>
+          <p className="span-3">
+            Opens the print dialog to print the current document.
+          </p>
+        </blockquote>
+        <cite className="span-2 underline decoration-1 underline-offset-2">
+          <a
+            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/print"
+          >
+            Window: print() method - Web APIs | MDN
+          </a>
+        </cite>
+      </WidgetDescription>
+    </WidgetContainer>
+  );
 }

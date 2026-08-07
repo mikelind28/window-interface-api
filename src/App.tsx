@@ -4,11 +4,8 @@ import "./index.css";
 // React imports
 import { useState } from "react";
 
-// style imports
-import { styleClass1, styleClass2, styleClass3 } from "./styles/styles";
-
 // Type imports
-import type { Style } from "./types/types";
+import type { Theme } from "./types/types";
 
 // Widget imports
 import Alert from "./components/Widgets/Alert";
@@ -32,89 +29,160 @@ import Level2Container from "./components/Elements/Level2Container";
 import KeyDown from "./components/Widgets/KeyDown";
 import ScrollToTop from "./components/Widgets/ScrollToTop";
 
-function App() {
-  function getLocalStorageStyle() {
-    const style = localStorage.getItem("style");
-    if (style === null) {
-      localStorage.setItem("style", "styleClass1")
-      return styleClass1;
-    } else if (style === "styleClass1") {
-      return styleClass1;
-    } else if (style === "styleClass2") {
-      return styleClass2;
-    } else if (style === "styleClass3") {
-      return styleClass3;
-    } else {
-      return styleClass1;
-    }
+export function getLocalStorageTheme(): Theme {
+  const theme = localStorage.getItem("theme");
+  if (theme === "style-1" || theme === "style-2" || theme === "style-3") {
+    return theme;
   }
+  localStorage.setItem("theme", "style-1");
+  return "style-1";
+}
 
-  const [currentStyle, setCurrentStyle] = useState<Style>(getLocalStorageStyle);
-  const [documentTitle, setDocumentTitle] = useState<string>('Properties and Methods for the Window, Document, and Navigator')
-
-  const isMobile =
-  (navigator as any).userAgentData?.mobile === true ||
-  /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
+function App() {
+  const [theme, setTheme] = useState<Theme>(getLocalStorageTheme);
+  const [documentTitle, setDocumentTitle] = useState<string>(
+    "Properties and Methods for the Window, Document, and Navigator",
   );
 
+  const isMobile =
+    (navigator as any).userAgentData?.mobile === true ||
+    /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    );
+
   return (
-    <main className="m-4">
+    <main className="m-2 xxs:m-4" data-theme={theme}>
       <title>{documentTitle}</title>
 
-      <Settings style={currentStyle} setStyle={setCurrentStyle}/>
+      <Settings theme={theme} setTheme={setTheme} />
 
-      <h1 className={currentStyle.h1Class}>
-        window
-      </h1>
+      <h1>window</h1>
 
-      <Level1Container style={currentStyle.levelOneClass}>
-        <h2 className={currentStyle.h2Class}>Properties:</h2>
-        <Level2Container style={currentStyle.levelTwoClass}>
-          <WindowDims style={currentStyle} />
-          <ScreenDims style={currentStyle} />
+      <Level1Container>
+        <div className="api-description">
+          <blockquote>
+            <p className="span-3">
+              The Window interface represents a window containing a DOM
+              document. A global variable, <code>window</code>, representing the window in
+              which the script is running, is exposed to JavaScript code.
+            </p>
+            <p className="span-3">
+              The Window interface is home to a variety of functions,
+              namespaces, objects, and constructors which are not necessarily
+              directly associated with the concept of a user interface window.
+              However, the Window interface is a suitable place to include these
+              items that need to be globally available.
+            </p>
+            <p className="span-3">
+              In a tabbed browser, each tab is represented by its own Window
+              object; the global window seen by JavaScript code running within a
+              given tab always represents the tab in which the code is running.
+              That said, even in a tabbed browser, some properties and methods
+              still apply to the overall window that contains the tab, such as
+              <code>resizeTo()</code> and <code>innerHeight</code>. Generally, anything that can't
+              reasonably pertain to a tab pertains to the window instead.
+            </p>
+          </blockquote>
+          <cite className="span-2 underline decoration-1 underline-offset-2">
+            <a
+              target="_blank"
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Window"
+            >
+              Window - Web APIs | MDN
+            </a>
+          </cite>
+        </div>
+
+        <h2>Properties:</h2>
+        <Level2Container>
+          <WindowDims />
+          <ScreenDims />
         </Level2Container>
 
-        <h2 className={currentStyle.h2Class}>Methods:</h2>
-        <Level2Container style={currentStyle.levelTwoClass}>
-          <Alert style={currentStyle} />
-          <Confirm style={currentStyle} />
-          { !isMobile && <MoveWindow style={currentStyle} />}
-          <Print style={currentStyle} />
-          <Prompt style={currentStyle} />
-          <SetIntervalTimer style={currentStyle} />
-          <SetIntervalSinceRefresh style={currentStyle} />
+        <h2>Methods:</h2>
+        <Level2Container>
+          <Alert />
+          <Confirm />
+          {!isMobile && <MoveWindow />}
+          <Print />
+          <Prompt />
+          <SetIntervalTimer />
+          <SetIntervalSinceRefresh />
         </Level2Container>
       </Level1Container>
-      
-      <h1 className={currentStyle.h1Class}>
-        document
-      </h1>
-      
-      <Level1Container style={currentStyle.levelOneClass}>
-        <h2 className={currentStyle.h2Class}>Methods:</h2>
-        <Level2Container style={currentStyle.levelTwoClass}>
-          <ClickCounter style={currentStyle} />
-          <CursorCoordinates style={currentStyle} />
-          <GetSelection style={currentStyle} />
-          <KeyDown style={currentStyle} />
-          <DocumentTitle style={currentStyle} setDocumentTitle={setDocumentTitle}/>
+
+      <h1>document</h1>
+
+      <Level1Container>
+        <div className="api-description">
+          <blockquote>
+            <p className="span-3">
+              The Document interface represents any web page loaded in the
+              browser and serves as an entry point into the web page's content,
+              which is the DOM tree.
+            </p>
+            <p className="span-3">
+              The Document interface describes the common properties and methods
+              for any kind of document. Depending on the document's type (e.g.,
+              HTML, XML, SVG, …), a larger API is available: HTML documents,
+              served with the "text/html" content type, also implement the
+              HTMLDocument interface, whereas XML and SVG documents implement
+              the XMLDocument interface.
+            </p>
+          </blockquote>
+          <cite className="span-2 underline decoration-1 underline-offset-2">
+            <a
+              target="_blank"
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Document"
+            >
+              Document - Web APIs | MDN
+            </a>
+          </cite>
+        </div>
+
+        <h2>Methods:</h2>
+        <Level2Container>
+          <ClickCounter />
+          <CursorCoordinates />
+          <GetSelection />
+          <KeyDown />
+          <DocumentTitle setDocumentTitle={setDocumentTitle} />
         </Level2Container>
       </Level1Container>
 
-      <h1 className={currentStyle.h1Class}>
-        navigator
-      </h1>
+      <h1>navigator</h1>
 
-      <Level1Container style={currentStyle.levelOneClass}>
-        <h2 className={currentStyle.h2Class}>Methods:</h2>
-        <Level2Container style={currentStyle.levelTwoClass}>
-          <Geolocation style={currentStyle} />
-          <CutCopyPaste style={currentStyle} />
+      <Level1Container>
+        <div className="api-description">
+          <blockquote>
+            <p className="span-3">
+              The Navigator interface represents the state and the identity of
+              the user agent. It allows scripts to query it and to register
+              themselves to carry on some activities.
+            </p>
+            <p className="span-3">
+              A Navigator object can be retrieved using the read-only
+              window.navigator property.
+            </p>
+          </blockquote>
+          <cite className="span-2 underline decoration-1 underline-offset-2">
+            <a
+              target="_blank"
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator"
+            >
+              Navigator - Web APIs | MDN
+            </a>
+          </cite>
+        </div>
+
+        <h2>Methods:</h2>
+        <Level2Container>
+          <Geolocation />
+          <CutCopyPaste />
         </Level2Container>
       </Level1Container>
 
-      <ScrollToTop style={currentStyle} />
+      <ScrollToTop />
     </main>
   );
 }

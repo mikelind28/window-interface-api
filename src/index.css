@@ -1,6 +1,290 @@
 @import "tailwindcss";
 
-@theme {
+@theme inline {
   --breakpoint-xxs: 25rem;
   --breakpoint-xs: 35rem;
+}
+
+/* THEME VARIABLES */
+
+[data-theme="style-1"] {
+  /* amber-100/66 */
+  --border-l1: rgb(254 243 199 / 0.66);
+  /* amber-200/66 */
+  --border-l2: rgb(253 230 138 / 0.66);
+  --h1-color: var(--color-amber-100);
+  --h2-color: var(--color-amber-200);
+  /* yellow-300/95 */
+  --h3-color: rgb(253 224 71 / 0.95); 
+  --h4-color: var(--color-teal-300);
+  --span1-color: var(--color-neutral-500);
+  /* emerald-300/50 */
+  --span2-color: rgb(110 231 183 / 0.5);
+  --input-caret: var(--color-teal-500);
+  --input-ring: #14b8a6;
+  --input-placeholder: var(--color-gray-400);
+  --input-text-size: 1rem;
+  --input-text-size-sm: 0.875rem;
+  --button-bg: var(--color-teal-300);
+  --button-outline: var(--color-teal-300);
+  --button-hover: var(--color-teal-500);
+  --button-active: var(--color-teal-600);
+}
+
+[data-theme="style-2"] {
+  /* purple-300/66 */
+  --border-l1: rgb(216 180 254 / 0.66);   
+  /* indigo-300/66 */
+  --border-l2: rgb(165 180 252 / 0.66);   
+  --h1-color: var(--color-purple-300);
+  --h2-color: var(--color-indigo-300);
+  --h3-color: var(--color-fuchsia-500);
+  --h4-color: var(--color-fuchsia-300);
+  --span1-color: var(--color-slate-500);
+  --span2-color: var(--color-blue-400);
+  --input-caret: #60a5fa;
+  --input-ring: var(--color-fuchsia-500);
+  --input-placeholder: var(--color-slate-400);
+  --input-text-size: 1rem;
+  --input-text-size-sm: 0.875rem;
+  --button-bg: #d8b4fe;
+  --button-outline: #d8b4fe;
+  --button-hover: var(--color-purple-400);
+  --button-active: var(--color-purple-500);
+}
+
+[data-theme="style-3"] {
+  /* amber-300/50 */
+  --border-l1: rgb(252 211 77 / 0.5);     
+  /* lime-500/50 */
+  --border-l2: rgb(132 204 22 / 0.5);     
+  /* amber-300/90 */
+  --h1-color: rgb(252 211 77 / 0.9);      
+  /* lime-500/90 */
+  --h2-color: rgb(132 204 22 / 0.9);      
+  --h3-color: var(--color-orange-400);
+  --h4-color: var(--color-amber-300);
+  --span1-color: var(--color-zinc-500);
+  --span2-color: var(--color-lime-600);
+  --input-caret: #65a30d;
+  --input-ring: #65a30d;
+  --input-placeholder: #71717a;
+  --input-text-size: 1rem;
+  --input-text-size-sm: 0.875rem;
+  --button-bg: #fcd34d;
+  --button-outline: #fb923c;
+  --button-hover: var(--color-amber-400);
+  --button-active: var(--color-amber-500);
+}
+
+/* SHARED / BASE RULES */
+
+.level-one {
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--border-l1);
+}
+
+.level-two {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  border-left: 1px solid var(--border-l2);
+  overflow: visible;
+}
+
+.container {
+  width: 100%;
+  min-width: 17.5rem; /* min-w-70 */
+  flex-grow: 1;
+  padding: 1rem;
+  margin-left: 0.25rem;
+  background-color: #1e293b; /* slate-800 */
+  border-radius: 0.5rem;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@media (min-width: 400px) { /* "xxs" breakpoint */
+  .level-one {
+    padding-left: 1rem;
+  }
+  .level-two {
+    padding-left: 1rem;
+    gap: 1rem;
+  }
+  .container { width: 12.5rem; max-width: 30rem; }
+}
+
+h1 { 
+  font-size: 2.25rem; 
+  line-height: 2.5rem; 
+  font-weight: 700; 
+  color: var(--h1-color); 
+  margin-top: 2rem;
+}
+
+@media (min-width: 800px) {
+  h1 {
+    margin-top: 3rem;
+  }
+}
+
+h2 {
+  margin-block: 1rem;
+  font-size: 1.875rem; line-height: 2.25rem;
+  font-weight: 300;
+  color: var(--h2-color);
+  margin-top: 1.5rem;
+}
+
+h3 {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1rem; 
+  line-height: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: var(--h3-color);
+  text-shadow: 0 4px 8px rgb(10 10 10 / 0.5);
+}
+
+@media (min-width: 640px) {
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+h4 { 
+  font-size: 1.25rem; 
+  line-height: 1.75rem; 
+  color: var(--h4-color);
+}
+
+p {
+  font-size: 1.25rem; line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--color-cyan-100);
+  text-shadow: 0 2px 4px rgb(10 10 10 / 0.5);
+}
+
+.span-1 { 
+  font-size: 1.25rem; 
+  line-height: 1rem; 
+  color: var(--span1-color); 
+}
+
+.span-2 { 
+  font-size: 1.25rem; 
+  font-weight: 200; 
+  color: var(--span2-color); 
+  text-shadow: none; 
+}
+
+.span-3 { 
+  font-size: 1rem; 
+  line-height: 1.5rem;
+  font-weight: 300; 
+  color: var(--h4-color); 
+  text-shadow: none; 
+  margin: 0rem 0 1rem 0rem;
+}
+
+.api-description {
+  margin: 0.5rem 0 0 0.25rem;
+}
+
+@media (min-width: 650px) {
+  .api-description {
+    max-width: 850px;
+    column-width: 16rem;
+    column-gap: 4rem;
+    column-rule: 1px solid var(--border-l1);
+  }
+}
+
+.widget-description {
+  background-color: var(--color-slate-950);
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: var(--h4-color);
+  max-height: 20rem;
+  overflow: scroll;
+}
+
+input, textarea {
+  display: block;
+  min-width: 0;
+  flex-grow: 1;
+  margin-block: 0.25rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+  font-size: var(--input-text-size);
+  color: #020617; /* slate-950 */
+  background-color: #ecfeff; /* cyan-50 */
+  border-radius: 0.125rem;
+  caret-color: var(--input-caret);
+  outline: none;
+}
+
+input::placeholder { 
+  color: var(--input-placeholder); 
+}
+
+input:focus { 
+  box-shadow: 0 0 0 2px var(--input-ring); 
+}
+
+input:invalid { 
+  box-shadow: 0 0 0 2px var(--color-red-400); 
+}
+
+@media (min-width: 640px) {
+  input { 
+    font-size: var(--input-text-size-sm); 
+  }
+}
+
+button {
+  margin-block: 0.5rem;
+  padding: 0.25rem 1rem;
+  color: var(--color-slate-950);
+  background-color: var(--button-bg);
+  border-radius: 0.5rem;
+  outline: 2px solid var(--button-outline);
+  outline-offset: 2px;
+}
+
+button:hover { 
+  background-color: var(--button-hover); 
+}
+
+button:active { 
+  background-color: var(--button-active); 
+}
+
+button:focus { 
+  outline-color: var(--color-blue-500); 
+}
+
+/* STRUCTURAL DIFFERENCES (container decoration) */
+
+[data-theme="style-1"] .container {
+  border-color: var(--color-emerald-400);
+  box-shadow:
+    inset 0 1px 2px rgb(2 6 23 / 0.5),
+    0 0 0 1px var(--color-lime-200);
+}
+
+[data-theme="style-2"] .container {
+  border-color: transparent;
+  outline: 2px solid var(--color-indigo-700);
+  outline-offset: 3px;
+}
+
+[data-theme="style-3"] .container {
+  border-color: var(--color-blue-500);
+  box-shadow: inset 0 1px 2px rgb(2 6 23 / 0.5);
 }
