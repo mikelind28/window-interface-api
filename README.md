@@ -6,6 +6,8 @@
 
 This is an interactive dashboard exploring common web APIs, including the [Window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window), the [Document interface](https://developer.mozilla.org/en-US/docs/Web/API/Document), and the [Navigator interface](https://developer.mozilla.org/en-US/docs/Web/API/Navigator).
 
+It includes three style options. The user's style preference is saved to the browser's local storage.
+
 ## Usage
 
 Play with the various widgets to explore properties and methods of the browser's Window, Document, and Navigator interfaces!
