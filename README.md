@@ -10,7 +10,7 @@ It includes three style options. The user's style preference is saved to the bro
 
 ## Usage
 
-Play with the various widgets to explore properties and methods of the browser's Window, Document, and Navigator interfaces!
+[Check out the website!](https://window-doc-nav.netlify.app/) Play with the various widgets to explore properties and methods of the browser's Window, Document, and Navigator interfaces!
 
 ![screenshot of dashboard](./public/screenshot-1.webp)
 
