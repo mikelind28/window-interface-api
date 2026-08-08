@@ -1,14 +1,14 @@
-# Properties and Methods of the Window, Document, and Navigator Interfaces
+# Common Properties and Methods of the Window, Document, and Navigator Web APIs
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This is a dashboard-style React application that allows users to see and interact with some of the properties and methods of the browser's Window, Document, and Navigator interfaces.
+This is an interactive dashboard exploring common web APIs, including the [Window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window), the [Document interface](https://developer.mozilla.org/en-US/docs/Web/API/Document), and the [Navigator interface](https://developer.mozilla.org/en-US/docs/Web/API/Navigator).
 
 ## Usage
 
-Run the app with Vite using the 'npm run dev' script and open it in a browser. Play with the various widgets to explore properties and methods of the browser's Window, Document, and Navigator interfaces!
+Play with the various widgets to explore properties and methods of the browser's Window, Document, and Navigator interfaces!
 
 ![screenshot of dashboard](./public/Screenshot-1.png)
 
