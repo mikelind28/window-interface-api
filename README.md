@@ -10,11 +10,17 @@ This is an interactive dashboard exploring common web APIs, including the [Windo
 
 Play with the various widgets to explore properties and methods of the browser's Window, Document, and Navigator interfaces!
 
-![screenshot of dashboard](./public/Screenshot-1.png)
+![screenshot of dashboard](./public/screenshot-1.webp)
 
-![screenshot of style settings](./public/Screenshot-2.png)
+![screenshot of style settings](./public/screenshot-2.webp)
 
-![screenshot of window interaction with custom alert](./public/Screenshot-3.png)
+![screenshot of a widget showing cursor coordinates](./public/screenshot-3.webp)
+
+![screenshot of a widget showing a click counter](./public/screenshot-4.webp)
+
+![screenshot of a widget that allows users to move a browser window with buttons](./public/screenshot-5.webp)
+
+![screenshot of a widget that allows users to write custom browser alerts](./public/screenshot-6.webp)
 
 ## License
 
